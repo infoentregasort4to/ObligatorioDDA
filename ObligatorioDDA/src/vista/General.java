@@ -1,12 +1,12 @@
 package vista;
 
 import Observador.Observador;
-import controlador.Fachada;
+import modelo.Fachada;
 import javax.swing.JDialog;
 
 public class General extends javax.swing.JFrame {
 
-    private Fachada ff = controlador.Fachada.getInstancia();
+    private Fachada ff = modelo.Fachada.getInstancia();
     
     public General() {
         setLocationRelativeTo(null);
@@ -77,13 +77,14 @@ public class General extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       JDialog ll = new Login(null, false);
-       ll.setVisible(true);       
-       ll.setLocationRelativeTo(null);
+       //JDialog ll = new Login(null, false);
+       //ll.setVisible(true);       
+       //ll.setLocationRelativeTo(null);
+       new VistaLogin(this, false).setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       JDialog nn = new SeleccionarArea(null, false);
+       JDialog nn = new SacarNumero(null, false);
        nn.setVisible(true);       
        nn.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton3ActionPerformed

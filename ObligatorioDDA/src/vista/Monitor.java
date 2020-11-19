@@ -2,13 +2,13 @@ package vista;
 
 import Observador.Observable;
 import Observador.Observador;
-import controlador.Fachada;
+import modelo.Fachada;
 import java.util.ArrayList;
 import modelo.Atencion;
 
 public class Monitor extends javax.swing.JDialog implements Observador{
 
-    private Fachada ff = controlador.Fachada.getInstancia();
+    private Fachada ff = modelo.Fachada.getInstancia();
     
     
     public Monitor(java.awt.Frame parent, boolean modal) {
@@ -16,15 +16,16 @@ public class Monitor extends javax.swing.JDialog implements Observador{
         ff.agregar(this);
         this.setTitle("Monitor");
         initComponents();
-        this.mostrarListaAtencionesPendientes();
     }
     
     @Override
     public void actualizar(Observable origen, Object evento)
-    {        
+    {
+        
         if(origen == ff) {
             if(evento.equals(Fachada.Eventos.NuevaAtencion)) {
-                this.mostrarListaAtencionesPendientes();                
+                this.mostrarListaAtencionesPendientes();
+                
             }
         }
     }

@@ -8,40 +8,36 @@ package vista;
 
 import Observador.Observable;
 import Observador.Observador;
+import controlador.ControladorPuestos;
+import controlador.VistaPuestos;
 import modelo.Trabajador;
-import controlador.Fachada;
+import modelo.Fachada;
 import java.util.ArrayList;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import modelo.Puesto;
 import modelo.Sector;
 
 
-public class Puestos extends javax.swing.JDialog implements Observador {
+public class Puestos extends javax.swing.JDialog implements VistaPuestos {
 
     private Trabajador trabajador;
     private Fachada ff= Fachada.getInstancia();
     private Sector sector;
-    private Puesto puesto;
+    //private Puesto puesto;
+    
+    private ControladorPuestos controlador;
     
     
     public Puestos(java.awt.Frame parent, boolean modal,Trabajador t) {
         super(parent, modal);
         initComponents();
-        this.trabajador=t;
-        ff.agregar(this);
-        setTitle("Bienvenido " + t.getNombre());        
-        puestosLibres();
+        controlador= new ControladorPuestos(this,t);
+        
     }
-    private void puestosLibres()
+    @Override
+    public void mostrarPuestos( ArrayList<Puesto> puestos)
     {
-        
-        Sector s = ff.obtenerSector(trabajador);
-        
-        this.sector=s;
-        
-        ArrayList<Puesto> puestos = s.getPuestosLibres();
-        
-        this.cboPuestos.removeAllItems();
         
         for(Puesto p : puestos)
         {
@@ -103,28 +99,34 @@ public class Puestos extends javax.swing.JDialog implements Observador {
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         Puesto p= (Puesto)this.cboPuestos.getSelectedItem();
-        //sector.ocuparPuesto(p,trabajador);
-        this.puesto=p;
-        ff.asignarPuesto(trabajador, p);  
+        controlador.asignarPuesto(p);
+        
+        /*this.puesto=p;
+        ff.asignarPuesto( p);  
         JDialog atencion = new VistaAtencion(null, false,p);
         this.setVisible(false);
         atencion.setVisible(true);       
-        atencion.setLocationRelativeTo(null);
+        atencion.setLocationRelativeTo(null);*/
     }//GEN-LAST:event_btnContinuarActionPerformed
-    @Override
-    public void actualizar(Observable origen, Object evento) {
-        if(evento.equals(Fachada.Eventos.PuestoDisponible)){//ACA ESTA IMPLEMENTADO POR EL PUESTO, ACCEDO AL ENUM POR LA CLASE PUESTO
-                                //SI LO ESTOY HACIENDO POR FACHADA SERIA FACHADA.EVENTOS.PUESTODISPONIBLE
-           System.out.println("me actualize");
-           ff.asignarAtencion(puesto);
-        }  
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JComboBox<Puesto> cboPuestos;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void puestoAsignado(Puesto p) {
+        String msg ="Se le asignado el " + p.toString();
+        JOptionPane.showMessageDialog(this, msg);
+        this.setVisible(false);
+    }
+
+   
+
+    
+    
 
     
 }

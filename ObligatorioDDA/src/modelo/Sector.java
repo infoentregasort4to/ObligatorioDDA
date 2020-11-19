@@ -5,21 +5,24 @@ import java.util.ArrayList;
 public class Sector {
     
     private String nombre;
-    private int numero=0;
+    private static int numero=0;
+    private int num;
     private ArrayList<Puesto> puestos = new ArrayList();
     private ArrayList<Trabajador> trabajadores = new ArrayList();
 
     public Sector(String nombre)
     {
-        this.nombre = nombre;      
+        this.nombre = nombre;
+        numero++;
+        this.num=numero;
     }
     
     public String getNombre()
     {
         return nombre;
-    }    
-    public int getNumero(){
-        return numero++;
+    }
+    public int getNum(){
+        return num;
     }
     public void setNombre(String nombre)
     {
@@ -31,7 +34,7 @@ public class Sector {
         return puestos;
     }
 
-    public void agregarPuesto(Puesto pnuevo)
+    public void setPuesto(Puesto pnuevo)
     {
         this.puestos.add(pnuevo);
     }
@@ -89,11 +92,5 @@ public class Sector {
                 pp.setTrabajador(t);
             }
         }
-    }
-    
-    @Override
-    public String toString()
-    {
-        return this.nombre;
     }
 }

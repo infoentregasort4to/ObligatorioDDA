@@ -13,8 +13,11 @@ public class Atencion  extends Observable {
     private String descripcion;   
     private Date fechaHoraFin;
     private Area area;
-    public enum Eventos{nuevaAtencion;}
-    
+
+    Atencion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public Area getArea() {
         return area;
     }
@@ -23,12 +26,14 @@ public class Atencion  extends Observable {
         this.area = area;
     }
     
-    public Atencion(Cliente cliente,Area a,int numeroAtencion)
+    
+    public enum Eventos{nuevaAtencion;}
+    
+    public Atencion(int numero, Cliente cliente,Area a)
     {
-        this.numero = numeroAtencion;
+        this.area=a;
+        this.numero = numero;
         this.cliente = cliente;
-        this.area = a;
-        
         avisar(Eventos.nuevaAtencion);
     }
     
@@ -82,6 +87,7 @@ public class Atencion  extends Observable {
     
     public void comenzarAtencion(Puesto puesto)
     {
+        System.out.println(puesto);
         this.puesto = puesto;
         this.fechaHora = new Date();        
     }

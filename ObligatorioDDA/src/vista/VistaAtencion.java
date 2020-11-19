@@ -1,6 +1,6 @@
 package vista;
 import Observador.Observable;
-import controlador.Fachada;
+import modelo.Fachada;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import modelo.Puesto;
@@ -14,7 +14,7 @@ public class VistaAtencion extends javax.swing.JDialog implements Observador {
 
     private Atencion atencion;
     
-    private Fachada ff = controlador.Fachada.getInstancia();
+    private Fachada ff = modelo.Fachada.getInstancia();
     
     private Trabajador trabajador;
     

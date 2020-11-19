@@ -22,10 +22,10 @@ public class Area
 
     public ArrayList<Sector> getSectores()
     {
-        return this.sectores;
+        return sectores;
     }
 
-    public void agregarSector(Sector sector)
+    public void setSector(Sector sector)
     {
         this.sectores.add(sector);
     }

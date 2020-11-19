@@ -1,6 +1,6 @@
 package main;
 
-import controlador.Fachada;
+import modelo.Fachada;
 import java.util.ArrayList;
 import modelo.Area;
 import modelo.Cliente;
@@ -20,25 +20,26 @@ public class PreCargaDeDatos
         Trabajador mit2 = new Trabajador("1231","Tincho","1234");
         Trabajador mit3 = new Trabajador("1232","Seba2","1234");
         Trabajador mit4 = new Trabajador("1234","John","1234");
-        Trabajador mit5 = new Trabajador("1994","Luciano","1994");        
+        Trabajador mit5 = new Trabajador("1994","Luciano","1994");
+        
            
         TipoCliente tc1 = new TipoCliente("ClienteConCosto");
         TipoCliente tc2 = new TipoCliente("ClienteExonerado");
         TipoCliente tc3 = new TipoCliente("ClienteGestor");    
-      
-        f.agregarTipoCliente(tc1);
-        f.agregarTipoCliente(tc2);
-        f.agregarTipoCliente(tc3);  
+        //cambiar nombre a agregarCliente
+        f.setTipoCliente(tc1);
+        f.setTipoCliente(tc2);
+        f.setTipoCliente(tc3);  
         
         Cliente c1 = new ClienteConCosto(tc1,"1237"," Seba","mail1@mail.com");
-        Cliente c2 = new ClienteConCosto(tc2,"1247","Tincho","mail2@mail.com");
-        Cliente c3 = new ClienteConCosto(tc3,"1257"," Seba2","mail3@mail.com");
-        Cliente c4 = new ClienteConCosto(tc2,"1267"," John","mail4@mail.com");        
-        
-        f.agregarCliente(c1);
-        f.agregarCliente(c2);
-        f.agregarCliente(c3);
-        f.agregarCliente(c4);
+        Cliente c2 = new ClienteConCosto(tc2,"1237","Tincho","mail2@mail.com");
+        Cliente c3 = new ClienteConCosto(tc3,"1237"," Seba2","mail3@mail.com");
+        Cliente c4 = new ClienteConCosto(tc2,"1237"," John","mail4@mail.com");        
+        //cambiar a agregarCliente
+        f.setCliente(c1);
+        f.setCliente(c2);
+        f.setCliente(c3);
+        f.setCliente(c4);
         
         Area a1 = new Area("Caja");
         Area a2 = new Area("Ventas");
@@ -76,31 +77,30 @@ public class PreCargaDeDatos
         f.agregarTrabajador(s3,mit4);   
         f.agregarTrabajador(s2,mit5); 
         
-        a1.agregarSector(s1);
-        a2.agregarSector(s2);
-        a3.agregarSector(s2);
-        a2.agregarSector(s3);
+        a2.setSector(s1);
+        a3.setSector(s2);
+        a2.setSector(s3);
+        //cambiar a agregarPuesto
+        s1.setPuesto(p1);
+        s1.setPuesto(p2);
+        s1.setPuesto(p3);
+        s1.setPuesto(p4);
+        s1.setPuesto(p5);
         
-        s1.agregarPuesto(p1);
-        s1.agregarPuesto(p2);
-        s1.agregarPuesto(p3);
-        s1.agregarPuesto(p4);
-        s1.agregarPuesto(p5);
+        s2.setPuesto(p6);
+        s2.setPuesto(p7);
+        s2.setPuesto(p8);
+        s2.setPuesto(p9);
+        s2.setPuesto(p10);
         
-        s2.agregarPuesto(p6);
-        s2.agregarPuesto(p7);
-        s2.agregarPuesto(p8);
-        s2.agregarPuesto(p9);
-        s2.agregarPuesto(p10);
-        
-        s3.agregarPuesto(p11);
-        s3.agregarPuesto(p12);
-        s3.agregarPuesto(p13);
-        s3.agregarPuesto(p14);
-        s3.agregarPuesto(p15);
+        s3.setPuesto(p11);
+        s3.setPuesto(p12);
+        s3.setPuesto(p13);
+        s3.setPuesto(p14);
+        s3.setPuesto(p15);
         
       
         
-        //ArrayList<Trabajador> mivar = f.getTrabajadores();
+        ArrayList<Trabajador> mivar = f.getTrabajadores();
     }
 }
