@@ -14,7 +14,7 @@ public class AtencionController implements Observador
     public AtencionController() {
         
     }
-     public ArrayList<Atencion> atencionesPendientes()
+    public ArrayList<Atencion> atencionesPendientes()
     {
         ArrayList<Atencion> atenciones= new ArrayList();
         for(Atencion a: this.atenciones)
@@ -25,12 +25,12 @@ public class AtencionController implements Observador
         return atenciones;
     }   
     
-    public Atencion getAtencionPendiente()
+    public Atencion getAtencionPendiente(Sector s)
     {
         
         for(Atencion a: this.atenciones)
         {
-            if(a.atencionPendiente())
+            if(a.getSector().equals(s) && a.atencionPendiente())
                 return a;
         }        
         return null;
@@ -41,15 +41,25 @@ public class AtencionController implements Observador
         return this.atenciones.size() + 1;
     }
     
-    public Atencion crearAtencion(Cliente cliente)
+    public Atencion crearAtencionPendiente(Cliente cliente,Sector s)
     {
-       /*int numero = this.pedirNumero();       
+       int numero = this.pedirNumero();       
        
-       Atencion aa = new Atencion(numero,cliente);
+       Atencion aa = new Atencion(numero,cliente,s);
        
-       this.atenciones.add(aa);  */   
+       this.atenciones.add(aa);     
  
-       return new Atencion();
+       return aa;
+    }
+    
+    public Atencion crearAtencionConPuesto(Cliente cliente, Sector s, Puesto p) {
+       int numero = this.pedirNumero();       
+       p.setPuestoDisponible(false);
+       Atencion aa = new Atencion(numero,cliente,s,p);
+       
+       this.atenciones.add(aa);     
+ 
+       return aa;
     }
     
     public void comenzarAtencion(Atencion a, Puesto p)
@@ -61,9 +71,9 @@ public class AtencionController implements Observador
     {
         a.finalizarAtencion(d); // ya hace update atenciones set des='', hora=time where id = a.id //
     }
-    public void asignarAtencion(Puesto p){
+    public void asignarAtencion(Puesto p,Sector s){
         
-        Atencion a= getAtencionPendiente();
+        Atencion a= getAtencionPendiente(s);
         if(a!=null){
             //System.out.println(a);
             a.comenzarAtencion(p);
@@ -83,4 +93,12 @@ public class AtencionController implements Observador
     public void actualizar(Observable origen, Object evento) {
         
     }
+
+    public Puesto puestoLibre(Area a, Sector s) {
+        Puesto p= a.buscarPuestoDisponible(s);
+        
+        return p;
+    }
+
+    
 }

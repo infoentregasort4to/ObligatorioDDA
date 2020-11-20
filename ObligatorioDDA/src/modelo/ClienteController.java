@@ -20,7 +20,7 @@ public class ClienteController
         this.tiposClientes.add(tc);
     }
     
-    public void setCliente(Cliente c)
+    public void agregarCliente(Cliente c)
     {
         this.clientes.add(c);
     }

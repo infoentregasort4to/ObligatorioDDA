@@ -33,9 +33,9 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
     {
         clientesC.setTipoCliente(tc);
     } 
-    public void setCliente(Cliente c)
+    public void agregarCliente(Cliente c)
     {
-        clientesC.setCliente(c);
+        clientesC.agregarCliente(c);
     }
     
     public Cliente getCliente(String ci)
@@ -46,6 +46,7 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
     
     //TRABAJADORES 
     public void asignarPuesto(Trabajador t,Puesto p){//SI PASO POR FACHADA PARA ASIGNAR EL PUESTO TAMBIEN AVISO POR FACHADA
+        
         avisar(Eventos.PuestoDisponible);
         p.setTrabajador(t);
     }
@@ -58,7 +59,12 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
     {        
        return trabajadoresC.getTrabajador(ci);
     }
-
+    public Atencion buscarAtencionPendiente(Sector s)
+    {
+        
+        return atencionC.getAtencionPendiente(s);
+        
+    }
     public void agregarTrabajador(Sector s,Trabajador tnuevo)
     {
         
@@ -80,7 +86,6 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
     
     //Puestos       
     //FIN PUESTOS
-    
     
     // Areas  
     public void agregarArea(Area a)
@@ -110,20 +115,25 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
         return atencionC.atencionesPendientes();
     }
     
-    public void asignarAtencion(Puesto p){
+    public void asignarAtencion(Puesto p,Sector s){
         System.out.println("sdkjafhkfdjdsf");
-        atencionC.asignarAtencion(p);
+        atencionC.asignarAtencion(p,s);
     }
     public Atencion obtenerAtencionPuesto(Puesto p){
         return atencionC.obtenerAtencionPuesto(p);
     }
-    public Atencion crearAtencion(Cliente cliente)
+    public Atencion crearAtencion(Cliente cliente,Area a,Sector s)
     {
        
-       
-       Atencion a= atencionC.crearAtencion(cliente);
+       Puesto p= atencionC.puestoLibre(a,s);
+       if(p!=null){
+           Atencion aa= atencionC.crearAtencionConPuesto(cliente,s,p);
+           avisar(Eventos.NuevaAtencion);
+           return aa;
+       }
+       Atencion aa= atencionC.crearAtencionPendiente(cliente,s);
        avisar(Eventos.NuevaAtencion);
-       return a;
+       return aa;
     }
     
     public void comenzarAtencion(Atencion a, Puesto p)

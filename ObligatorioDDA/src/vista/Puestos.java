@@ -23,7 +23,6 @@ public class Puestos extends javax.swing.JDialog implements VistaPuestos {
 
     private Trabajador trabajador;
     private Fachada ff= Fachada.getInstancia();
-    private Sector sector;
     //private Puesto puesto;
     
     private ControladorPuestos controlador;
@@ -115,12 +114,20 @@ public class Puestos extends javax.swing.JDialog implements VistaPuestos {
     private javax.swing.JComboBox<Puesto> cboPuestos;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-
+    
     @Override
-    public void puestoAsignado(Puesto p) {
+    public void puestoAsignado(Puesto p,Trabajador t) {
         String msg ="Se le asignado el " + p.toString();
         JOptionPane.showMessageDialog(this, msg);
         this.setVisible(false);
+        JDialog atencion = new TrabajadorAtencion(null,false,p,t);
+        atencion.setVisible(true);     
+        atencion.setLocationRelativeTo(null);
+    }
+
+    @Override
+    public void mostrarError(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
     }
 
    

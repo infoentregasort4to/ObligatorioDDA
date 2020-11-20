@@ -13,10 +13,10 @@ import modelo.Fachada;
 import modelo.Puesto;
 import modelo.Sector;
 import modelo.Trabajador;
-import vista.VistaAtencion;
+import vista.TrabajadorAtencion;
 
 
-public class ControladorPuestos implements Observador {
+public class ControladorPuestos {
     
     private Fachada ff=Fachada.getInstancia();
     private VistaPuestos vista;
@@ -25,32 +25,18 @@ public class ControladorPuestos implements Observador {
     private Trabajador trabajador;
 
     public ControladorPuestos(VistaPuestos vista, Trabajador t){
-        ff.agregar(this);
+        //ff.agregar(this);
         this.vista=vista;
         this.trabajador=t;
         this.sector = ff.obtenerSector(trabajador);
-        ArrayList<Puesto> puestos=sector.getPuestos();
-        vista.mostrarPuestos(puestos);
+        vista.mostrarPuestos(sector.getPuestos());
     }
     public void asignarPuesto(Puesto p){
         
         ff.asignarPuesto(trabajador, p);
-        JDialog atencion = new VistaAtencion(null, false,p);
+        vista.puestoAsignado(p,trabajador);
         
-        atencion.setVisible(true);       
-        atencion.setLocationRelativeTo(null);
-        vista.puestoAsignado(p);
     }
     
-    
-    
-    @Override
-    public void actualizar(Observable origen, Object evento) {
-        if(evento.equals(Fachada.Eventos.PuestoDisponible)){//ACA ESTA IMPLEMENTADO POR EL PUESTO, ACCEDO AL ENUM POR LA CLASE PUESTO
-                                //SI LO ESTOY HACIENDO POR FACHADA SERIA FACHADA.EVENTOS.PUESTODISPONIBLE
-           
-           ff.asignarAtencion(puesto);
-        }
-    }
     
 }

@@ -6,13 +6,16 @@ public class Puesto extends Observable {//ESTA ES LA OPCION QUE VENIAMOS APLICAN
     
     private String nombre;
     private Trabajador trabajador;
+    private boolean disponible;
 
     public enum Eventos{PuestoDisponible,PuestoOcupado;}//EN ESTE CASO EL PUESTO MANDA LOS EVENTOS
 
     public Puesto(String nombre) 
     {
         this.nombre = nombre;
+        
     }
+    
     
     public String getNombre()
     {
@@ -22,6 +25,12 @@ public class Puesto extends Observable {//ESTA ES LA OPCION QUE VENIAMOS APLICAN
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
+    }
+    public void setPuestoDisponible(boolean b){
+        this.disponible=b;
+    }
+    public boolean puestoDisponible(){
+        return this.disponible;
     }
     
     public boolean puestoLibre()
@@ -37,6 +46,7 @@ public class Puesto extends Observable {//ESTA ES LA OPCION QUE VENIAMOS APLICAN
     public void setTrabajador(Trabajador t){
         avisar(Eventos.PuestoDisponible);//AVISO A QUIEN ME ESTE VIENDO
         this.trabajador= t;
+        this.disponible=true;
         
     }
     

@@ -16,7 +16,6 @@ public class Sector {
         numero++;
         this.num=numero;
     }
-    
     public String getNombre()
     {
         return nombre;
@@ -28,17 +27,15 @@ public class Sector {
     {
         this.nombre = nombre;
     }
-
     public ArrayList<Puesto> getPuestos()
     {
         return puestos;
     }
 
-    public void setPuesto(Puesto pnuevo)
+    public void agregarPuesto(Puesto pnuevo)
     {
         this.puestos.add(pnuevo);
     }
-    
     public ArrayList<Puesto> getPuestosLibres() //los libres de ese sector
     {
         ArrayList<Puesto> losLibres = new ArrayList();
@@ -50,12 +47,10 @@ public class Sector {
         }        
         return losLibres;
     }
-    
     public void agregarTrabajador(Trabajador t)
     {        
         trabajadores.add(t);
     }
-    
     public ArrayList<Trabajador> getTrabajadores()
     {
         return trabajadores;
@@ -72,7 +67,6 @@ public class Sector {
         return null;
     
     }
-    
     public Trabajador tieneTrabajador(Trabajador t)
     {
         for(Trabajador trabajador: trabajadores){
@@ -85,7 +79,6 @@ public class Sector {
         
         return null;
     }
-    
     public void ocuparPuesto(String p,Trabajador t){
         for(Puesto pp : puestos){
             if(pp.getNombre() == p){
@@ -93,4 +86,20 @@ public class Sector {
             }
         }
     }
+    @Override
+    public String toString(){
+        return this.nombre;
+    }
+
+    public Puesto buscarPuestoDisponible() {
+        Puesto pp= null;
+        for(Puesto p : puestos ){
+            if(p.puestoDisponible()){
+                pp=p;
+            }
+        }
+        return pp;
+    }
+
+    
 }

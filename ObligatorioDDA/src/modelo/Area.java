@@ -25,7 +25,7 @@ public class Area
         return sectores;
     }
 
-    public void setSector(Sector sector)
+    public void agregarSector(Sector sector)
     {
         this.sectores.add(sector);
     }
@@ -53,5 +53,10 @@ public class Area
             }
         }
         return null;
+    }
+
+    public Puesto buscarPuestoDisponible(Sector s) {
+        Puesto p= s.buscarPuestoDisponible();
+        return p;
     }
 }

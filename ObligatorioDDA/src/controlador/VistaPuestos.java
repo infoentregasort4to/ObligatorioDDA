@@ -7,6 +7,7 @@ package controlador;
 
 import java.util.ArrayList;
 import modelo.Puesto;
+import modelo.Trabajador;
 
 /**
  *
@@ -14,5 +15,6 @@ import modelo.Puesto;
  */
 public interface VistaPuestos {
     public void mostrarPuestos(ArrayList<Puesto> p);
-    public void puestoAsignado(Puesto p);
+    public void puestoAsignado(Puesto p,Trabajador t);
+    public void mostrarError(String msg);
 }

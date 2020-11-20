@@ -12,26 +12,33 @@ public class Atencion  extends Observable {
     private Date fechaHora;
     private String descripcion;   
     private Date fechaHoraFin;
-    private Area area;
+    private Sector sector;
 
-    Atencion() {
+    public Atencion(int numero, Cliente cliente, Sector s, Puesto p) {
+        this.sector=s;
+        this.numero = numero;
+        this.cliente = cliente;
+        this.puesto=p;
+        avisar(Eventos.nuevaAtencion);
+    }
+
+   /* Atencion() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
+    public Sector getSector() {
+        return sector;
     }
 
-    public Area getArea() {
-        return area;
-    }
-
-    public void setArea(Area area) {
-        this.area = area;
+    public void setSector(Sector sector) {
+        this.sector = sector;
     }
     
     
     public enum Eventos{nuevaAtencion;}
     
-    public Atencion(int numero, Cliente cliente,Area a)
+    public Atencion(int numero, Cliente cliente,Sector sector)
     {
-        this.area=a;
+        this.sector=sector;
         this.numero = numero;
         this.cliente = cliente;
         avisar(Eventos.nuevaAtencion);
