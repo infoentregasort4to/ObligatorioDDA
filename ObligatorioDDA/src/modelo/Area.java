@@ -22,7 +22,7 @@ public class Area
 
     public ArrayList<Sector> getSectores()
     {
-        return sectores;
+        return this.sectores;
     }
 
     public void agregarSector(Sector sector)
@@ -53,10 +53,5 @@ public class Area
             }
         }
         return null;
-    }
-
-    public Puesto buscarPuestoDisponible(Sector s) {
-        Puesto p= s.buscarPuestoDisponible();
-        return p;
     }
 }

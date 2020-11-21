@@ -1,6 +1,6 @@
 package main;
 
-import modelo.Fachada;
+import controlador.Fachada;
 import java.util.ArrayList;
 import modelo.Area;
 import modelo.Cliente;
@@ -20,22 +20,21 @@ public class PreCargaDeDatos
         Trabajador mit2 = new Trabajador("1231","Tincho","1234");
         Trabajador mit3 = new Trabajador("1232","Seba2","1234");
         Trabajador mit4 = new Trabajador("1234","John","1234");
-        Trabajador mit5 = new Trabajador("1994","Luciano","1994");
-        
+        Trabajador mit5 = new Trabajador("1994","Luciano","1994");        
            
         TipoCliente tc1 = new TipoCliente("ClienteConCosto");
         TipoCliente tc2 = new TipoCliente("ClienteExonerado");
         TipoCliente tc3 = new TipoCliente("ClienteGestor");    
-        //cambiar nombre a agregarCliente
-        f.setTipoCliente(tc1);
-        f.setTipoCliente(tc2);
-        f.setTipoCliente(tc3);  
+      
+        f.agregarTipoCliente(tc1);
+        f.agregarTipoCliente(tc2);
+        f.agregarTipoCliente(tc3);  
         
         Cliente c1 = new ClienteConCosto(tc1,"1237"," Seba","mail1@mail.com");
         Cliente c2 = new ClienteConCosto(tc2,"1237","Tincho","mail2@mail.com");
         Cliente c3 = new ClienteConCosto(tc3,"1237"," Seba2","mail3@mail.com");
         Cliente c4 = new ClienteConCosto(tc2,"1237"," John","mail4@mail.com");        
-        //cambiar a agregarCliente
+        
         f.agregarCliente(c1);
         f.agregarCliente(c2);
         f.agregarCliente(c3);
@@ -78,12 +77,10 @@ public class PreCargaDeDatos
         f.agregarTrabajador(s2,mit5); 
         
         a1.agregarSector(s1);
-        a1.agregarSector(s2);
-        a1.agregarSector(s3);
-        a2.agregarSector(s1);
+        a2.agregarSector(s2);
         a3.agregarSector(s2);
         a2.agregarSector(s3);
-        //cambiar a agregarPuesto
+        
         s1.agregarPuesto(p1);
         s1.agregarPuesto(p2);
         s1.agregarPuesto(p3);
@@ -104,6 +101,6 @@ public class PreCargaDeDatos
         
       
         
-        ArrayList<Trabajador> mivar = f.getTrabajadores();
+        //ArrayList<Trabajador> mivar = f.getTrabajadores();
     }
 }

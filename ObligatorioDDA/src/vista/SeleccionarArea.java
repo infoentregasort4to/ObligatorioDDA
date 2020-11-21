@@ -3,6 +3,7 @@ import controlador.Fachada;
 import java.util.ArrayList;
 import javax.swing.JDialog;
 import modelo.Area;
+import modelo.Cliente;
 
 public class SeleccionarArea extends javax.swing.JDialog {
 
@@ -10,8 +11,7 @@ public class SeleccionarArea extends javax.swing.JDialog {
     
     public SeleccionarArea(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        setLocationRelativeTo(null);
-        this.setTitle("Seleccione un Area");        
+        this.setTitle("Seleccione un Area");
         initComponents();
         areas();
     }
@@ -87,7 +87,7 @@ public class SeleccionarArea extends javax.swing.JDialog {
     private void btnSeleccionarSectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeleccionarSectorActionPerformed
         Area a = (Area)this.cboAreas.getSelectedItem();
 
-        JDialog vs = new SeleccionarSector(null, false,a);
+        JDialog vs = new SeleccionarSector_(null, false,a);
         this.setVisible(false);
         vs.setVisible(true);
     }//GEN-LAST:event_btnSeleccionarSectorActionPerformed

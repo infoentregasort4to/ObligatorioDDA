@@ -1,13 +1,12 @@
 package vista;
 
 import Observador.Observador;
-import controlador.VistaMonitor;
-import modelo.Fachada;
+import controlador.Fachada;
 import javax.swing.JDialog;
 
 public class General extends javax.swing.JFrame {
 
-    private Fachada ff = modelo.Fachada.getInstancia();
+    private Fachada ff = controlador.Fachada.getInstancia();
     
     public General() {
         setLocationRelativeTo(null);
@@ -78,27 +77,59 @@ public class General extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       //JDialog ll = new Login(null, false);
-       //ll.setVisible(true);       
-       //ll.setLocationRelativeTo(null);
-       new VistaLogin(null, false).setVisible(true);
+       JDialog ll = new Login(null, false);
+       ll.setVisible(true);       
+       ll.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       JDialog nn = new AreasCliente(null, false);
+       JDialog nn = new SeleccionarArea(null, false);
        nn.setVisible(true);       
        nn.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //JDialog mm = new Monitor(null, false);
-        //mm.setVisible(true);
+        JDialog mm = new Monitor(null, false);
+        mm.setVisible(true);
         /*ff.agregarObservador((Observador) mm); // el unico observador*/
-        //mm.setLocationRelativeTo(null);
-        new Monitor(null,false).setVisible(true);
+        mm.setLocationRelativeTo(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-   
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(General.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(General.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(General.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(General.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new General().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
