@@ -32,6 +32,7 @@ public class ControladorMonitor implements Observador {
                 ArrayList<Atencion> a = ff.atencionesPendientes();
                 vista.MostrarListaAtencionesPendientes(a);
                 
+                
             }
         }   
     }
