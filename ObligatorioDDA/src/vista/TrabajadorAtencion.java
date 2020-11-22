@@ -1,4 +1,5 @@
 package vista;
+
 import Observador.Observable;
 import modelo.Fachada;
 import java.util.ArrayList;
@@ -9,40 +10,40 @@ import modelo.Trabajador;
 import Observador.Observador;
 import controlador.ControladorTrabajadorAtencion;
 import controlador.VistaTrabajadorAtencion;
+import java.util.Calendar;
+import java.util.Date;
 import modelo.Area;
 import modelo.Atencion;
 
-
-public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrabajadorAtencion  {
+public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrabajadorAtencion {
 
     private Atencion atencion;
-    
+
     private Fachada ff = modelo.Fachada.getInstancia();
-    
+
     private Trabajador trabajador;
-    
+
     private Sector sector;
-    
+
     private Puesto p;
-    
+
     private ControladorTrabajadorAtencion controlador;
-    
-    public TrabajadorAtencion(java.awt.Frame parent, boolean modal, Puesto p,Trabajador t)
-    {
+
+    public TrabajadorAtencion(java.awt.Frame parent, boolean modal, Puesto p, Trabajador t) {
         super(parent, modal);
         initComponents();
-        controlador= new ControladorTrabajadorAtencion(this,p,t);
-        this.setLocationRelativeTo(null);         
-    } 
-    
+        controlador = new ControladorTrabajadorAtencion(this, p, t);
+        this.p = p;
+        this.trabajador = t;
+        this.setLocationRelativeTo(null);
+    }
+
     @Override
     public void finYSalir() {
-        
-       // guardar atencion 
-        
+
+        // guardar atencion 
         controlador.logout(); // verificar si hay atencion pendiente
-        
-        
+
         this.setVisible(false);
         dispose();
         //llamar al controlador para hacer el logout()
@@ -52,12 +53,12 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
 
     @Override
     public void finYSiguiente() {
-       //guardar la atencion
+        //guardar la atencion:
+
+        controlador.cerrarYSeguir(txtDesc.getText());
         
-        
-        //
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -65,7 +66,7 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
         finYSalir = new javax.swing.JButton();
         finYSiguiente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtDesc = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         nombreAtencion = new javax.swing.JLabel();
@@ -87,9 +88,9 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtDesc.setColumns(20);
+        txtDesc.setRows(5);
+        jScrollPane1.setViewportView(txtDesc);
 
         jLabel1.setText("Comentario de la atencion");
 
@@ -153,15 +154,15 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     private void finYSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finYSiguienteActionPerformed
         finYSiguiente();
     }//GEN-LAST:event_finYSiguienteActionPerformed
-   
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton finYSalir;
     private javax.swing.JButton finYSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel nombreAtencion;
+    private javax.swing.JTextArea txtDesc;
     private javax.swing.JLabel txtInfo;
     // End of variables declaration//GEN-END:variables
 
@@ -172,19 +173,17 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
 
     @Override
     public void mostrarAtencion(Object a) {
-        if(a!=null){
-            Atencion aa=(Atencion)a;
-            nombreAtencion.setText( "Numero: " + aa.getNumero() + " --- Cliente: " +aa.getCliente());    
-        }
-        else{
+        if (a != null) {
+            Atencion aa = (Atencion) a;
+            nombreAtencion.setText("Numero: " + aa.getNumero() + " --- Cliente: " + aa.getCliente());
+        } else {
             nombreAtencion.setText("No hay atencion asignada");
-        }        
+        }
     }
 
     @Override
-    public void mostrarInfo(String s)
-    {
-        txtInfo.setText(s);        
+    public void mostrarInfo(String s) {
+        txtInfo.setText(s);
     }
-    
+
 }

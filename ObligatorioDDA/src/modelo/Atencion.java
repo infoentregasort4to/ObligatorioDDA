@@ -111,7 +111,8 @@ public class Atencion  extends Observable {
     {
         if(fechaHoraFin != null)
         {
-            return fechaHoraFin.getTime() - fechaHora.getTime();
+            float tiempoAtencion = fechaHoraFin.getTime() - fechaHora.getTime();
+            return tiempoAtencion;
         }
         return 0;
     }
