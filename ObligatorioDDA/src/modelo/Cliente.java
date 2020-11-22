@@ -58,4 +58,11 @@ public abstract class Cliente {
     public String toString(){
         return this.getNombre();
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if(o==null) return false; //TODO comprobar SIEMPRE
+        Cliente otro = (Cliente) o;
+        return ci.equals(otro.getCi());
+    }
 }
