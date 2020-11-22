@@ -27,6 +27,8 @@ public abstract class Login extends javax.swing.JDialog implements VistaLogin {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        tfNombre.setText("0001");
+
         jLabel2.setText("Contraseña:");
 
         bLogin.setText("Ingresar");
@@ -36,6 +38,7 @@ public abstract class Login extends javax.swing.JDialog implements VistaLogin {
             }
         });
 
+        tfPassword.setText("1234");
         tfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfPasswordActionPerformed(evt);

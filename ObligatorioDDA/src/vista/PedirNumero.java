@@ -42,6 +42,7 @@ public class PedirNumero extends javax.swing.JDialog implements VistaPedirNumero
 
         jLabel3.setText("Ingrese su numero de cedula");
 
+        txtCi.setText("1237");
         txtCi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCiActionPerformed(evt);

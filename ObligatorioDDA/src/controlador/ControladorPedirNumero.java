@@ -22,7 +22,6 @@ public class ControladorPedirNumero {
     }
 
     public void crearAtencion(String ci, Sector s) {
-
         try {
             if (!ff.atencionesPendientes().isEmpty()) {
                 for (Atencion ate : ff.atencionesPendientes()) {

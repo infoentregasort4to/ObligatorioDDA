@@ -41,7 +41,7 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
        // guardar atencion 
         
         controlador.logout(); // verificar si hay atencion pendiente
-
+        
         
         this.setVisible(false);
         dispose();
