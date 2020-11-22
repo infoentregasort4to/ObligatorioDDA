@@ -102,15 +102,15 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
             
             cal.setTime(new Date());
             
-            Date tiempoActual = cal.getTime();
-            
-            cal.add(Calendar.MINUTE, 10);
-            cal.add(Calendar.HOUR, 1); 
-            
-            Date tiempoFuturo = cal.getTime();
-            
-            long tiempoTranscurrido = tiempoFuturo.getTime() - tiempoActual.getTime();
-            long minutosTranscurridos = tiempoTranscurrido/(1000*60);
+//            Date tiempoActual = cal.getTime();
+//            
+//            cal.add(Calendar.MINUTE, 10);
+//            cal.add(Calendar.HOUR, 1); 
+//            
+//            Date tiempoFuturo = cal.getTime();
+//            
+//            long tiempoTranscurrido = tiempoFuturo.getTime() - tiempoActual.getTime();
+//            long minutosTranscurridos = tiempoTranscurrido/(1000*60);
             
             aa.setFechaHora(cal.getTime());
             avisar(Eventos.ComienzoAtencion);
