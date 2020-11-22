@@ -88,23 +88,8 @@ public class ControladorTrabajadorAtencion implements Observador {
     }
 
     public void cerrarYSeguir(String descripcion) {
-        //fecha y hora inicio - (tiene)
-        //Puesto - (tiene)
-        //fecha y hora fin (setear)
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(new Date());
-        Date tiempoActual = cal.getTime();
-        this.atencion.setFechaHoraFin(tiempoActual);
-        
-        //descripción (tomarlo del campo)
-        this.atencion.setDescripcion(descripcion);
-        //Trabajador (tiene el Puesto que tiene al Trabajador)
-        //liberar puesto
         this.atencion.getPuesto().setPuestoDisponible(true);
-        //avisar que se liberó para seguir atendiendo
-        //a través de fachada
-        //agregar la atención a la lista de atenciones
-        //a través de fachada
+        ff.finalizarAtencion(this.atencion, descripcion);
     }
     
 }
