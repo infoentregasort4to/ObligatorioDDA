@@ -31,8 +31,6 @@ public class ControladorMonitor implements Observador {
             if(evento.equals(Fachada.Eventos.NuevaAtencion)||evento.equals(Fachada.Eventos.ComienzoAtencion) ) {
                 ArrayList<Atencion> a = ff.atencionesPendientes();
                 vista.MostrarListaAtencionesPendientes(a);
-                
-                
             }
         }   
     }

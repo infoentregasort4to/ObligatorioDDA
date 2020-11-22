@@ -107,10 +107,11 @@ public class PedirNumero extends javax.swing.JDialog implements VistaPedirNumero
     }//GEN-LAST:event_txtCiActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //verificar que no esté esperando a ser atendido:
+        
         Sector s= (Sector)this.cboSectores.getSelectedItem();
         String ci= txtCi.getText();
         controlador.crearAtencion(ci,s);
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     @Override

@@ -71,7 +71,7 @@ public class ControladorTrabajadorAtencion implements Observador {
     
     public String mostrarInfo()
     {   
-        String info = this.p + "Area: " + this.aa + " Sector: " + this.sector + " Cant. Atenciones: " + this.cont + " Tiempo Promedio Atencion: " + this.tiempoA;        
+        String info = this.p + " " + "Area: " + this.aa + " Sector: " + this.sector + " Cant. Atenciones: " + this.cont + " Tiempo Promedio Atencion: " + this.tiempoA;        
         return info;
     }
     

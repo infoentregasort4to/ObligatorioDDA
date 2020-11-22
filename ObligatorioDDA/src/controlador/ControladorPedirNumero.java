@@ -22,17 +22,24 @@ public class ControladorPedirNumero {
     }
 
     public void crearAtencion(String ci, Sector s) {
+
         try {
-            Cliente c = ff.getCliente(ci);
-            Atencion aa=ff.crearAtencion(c, this.a, s);
-            if(aa.getPuesto()!=null){
-                vista.mostrarMensaje("Se le ha asignado el " + aa.getPuesto()); 
+            if (!ff.atencionesPendientes().isEmpty()) {
+                for (Atencion ate : ff.atencionesPendientes()) {
+                    if (ate.getCliente().getCi().equals(ci)) {
+                        vista.mostrarMensaje("Usted ya tiene una atención en espera.");
+                    }
+                }
+            } else {
+                Cliente c = ff.getCliente(ci);
+                Atencion aa = ff.crearAtencion(c, this.a, s);
+                if (aa.getPuesto() != null) {
+                    vista.mostrarMensaje("Se le ha asignado el " + aa.getPuesto());
+                } else {
+                    vista.mostrarMensaje("Su atencion ha quedado en espera");
+                }
             }
-            else{
-                vista.mostrarMensaje("Su atencion ha quedado en espera");
-            }
-        }
-        catch (AtencionException ae) {
+        } catch (AtencionException ae) {
             String msg = ae.getMessage();
             vista.mostrarMensaje(msg);
         }
