@@ -16,5 +16,6 @@ import modelo.Trabajador;
 public interface VistaPuestos {
     public void mostrarPuestos(ArrayList<Puesto> p);
     public void puestoAsignado(Puesto p,Trabajador t);
+    public void mostrarTitulo(String s);
     public void mostrarError(String msg);
 }

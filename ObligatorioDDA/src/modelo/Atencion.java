@@ -12,23 +12,35 @@ public class Atencion  extends Observable {
     private Date fechaHora;
     private String descripcion;   
     private Date fechaHoraFin;
-    private Area area;
-    public enum Eventos{nuevaAtencion;}
-    
-    public Area getArea() {
-        return area;
+    private Sector sector;
+
+    public Atencion(int numero, Cliente cliente, Sector s, Puesto p) {
+        this.sector=s;
+        this.numero = numero;
+        this.cliente = cliente;
+        this.puesto=p;
+        avisar(Eventos.nuevaAtencion);
     }
 
-    public void setArea(Area area) {
-        this.area = area;
+   /* Atencion() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }*/
+    public Sector getSector() {
+        return sector;
+    }
+
+    public void setSector(Sector sector) {
+        this.sector = sector;
     }
     
-    public Atencion(Cliente cliente,Area a,int numeroAtencion)
+    
+    public enum Eventos{nuevaAtencion;}
+    
+    public Atencion(int numero, Cliente cliente,Sector sector)
     {
-        this.numero = numeroAtencion;
+        this.sector=sector;
+        this.numero = numero;
         this.cliente = cliente;
-        this.area = a;
-        
         avisar(Eventos.nuevaAtencion);
     }
     
@@ -61,6 +73,7 @@ public class Atencion  extends Observable {
     }
 
     public void setFechaHora(Date fecha_hora) {
+        
         this.fechaHora = fecha_hora;
     }
 
@@ -84,7 +97,7 @@ public class Atencion  extends Observable {
     {
         System.out.println(puesto);
         this.puesto = puesto;
-        this.fechaHora = new Date();        
+        this.fechaHora = new Date();      
     }
     
     public void finalizarAtencion(String d)
@@ -101,7 +114,7 @@ public class Atencion  extends Observable {
     @Override
     public String toString()
     {
-        String str = "-- SECTOR PENDIENTE ";        
+        String str = this.sector.toString();        
         str += (this.puesto!=null) ? this.puesto.getNombre(): "-- PENDIENTE de ATENCION";
         str += "-- " + this.numero + " "; 
         str += "-- " + this.cliente.getNombre()+ " ";   

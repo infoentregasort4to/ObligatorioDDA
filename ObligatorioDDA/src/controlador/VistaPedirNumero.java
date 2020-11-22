@@ -13,5 +13,6 @@ import modelo.Sector;
  * @author sebaa
  */
 public interface VistaPedirNumero {
+    public void mostrarMensaje(String msg);
     public void MostrarSectores(ArrayList<Sector> sectores);
 }

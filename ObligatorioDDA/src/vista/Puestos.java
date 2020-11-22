@@ -8,40 +8,40 @@ package vista;
 
 import Observador.Observable;
 import Observador.Observador;
+import controlador.ControladorPuestos;
+import controlador.VistaPuestos;
 import modelo.Trabajador;
-import controlador.Fachada;
+import modelo.Fachada;
 import java.util.ArrayList;
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import modelo.Puesto;
 import modelo.Sector;
 
 
-public class Puestos extends javax.swing.JDialog implements Observador {
+public class Puestos extends javax.swing.JDialog implements VistaPuestos {
 
     private Trabajador trabajador;
     private Fachada ff= Fachada.getInstancia();
-    private Sector sector;
-    private Puesto puesto;
+    //private Puesto puesto;
+    
+    private ControladorPuestos controlador;
     
     
     public Puestos(java.awt.Frame parent, boolean modal,Trabajador t) {
         super(parent, modal);
         initComponents();
-        this.trabajador=t;
-        ff.agregar(this);
-        setTitle("Bienvenido " + t.getNombre());        
-        puestosLibres();
+        controlador= new ControladorPuestos(this,t);
+        
     }
-    private void puestosLibres()
+    @Override
+    public void mostrarTitulo(String s){
+        txtSector.setText(s);
+    }
+    
+    @Override
+    public void mostrarPuestos( ArrayList<Puesto> puestos)
     {
-        
-        Sector s = ff.obtenerSector(trabajador);
-        
-        this.sector=s;
-        
-        ArrayList<Puesto> puestos = s.getPuestosLibres();
-        
-        this.cboPuestos.removeAllItems();
         
         for(Puesto p : puestos)
         {
@@ -56,6 +56,7 @@ public class Puestos extends javax.swing.JDialog implements Observador {
         btnContinuar = new javax.swing.JButton();
         cboPuestos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        txtSector = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -74,17 +75,20 @@ public class Puestos extends javax.swing.JDialog implements Observador {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(99, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(64, 64, 64))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(189, 189, 189)
-                .addComponent(cboPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(199, 199, 199)
                 .addComponent(btnContinuar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(99, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtSector, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cboPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(64, 64, 64))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,7 +96,9 @@ public class Puestos extends javax.swing.JDialog implements Observador {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(33, 33, 33)
-                .addComponent(cboPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cboPuestos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSector, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addComponent(btnContinuar)
                 .addContainerGap(45, Short.MAX_VALUE))
@@ -103,28 +109,43 @@ public class Puestos extends javax.swing.JDialog implements Observador {
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         Puesto p= (Puesto)this.cboPuestos.getSelectedItem();
-        //sector.ocuparPuesto(p,trabajador);
-        this.puesto=p;
-        ff.asignarPuesto(trabajador, p);  
+        controlador.asignarPuesto(p);
+        
+        /*this.puesto=p;
+        ff.asignarPuesto( p);  
         JDialog atencion = new VistaAtencion(null, false,p);
         this.setVisible(false);
         atencion.setVisible(true);       
-        atencion.setLocationRelativeTo(null);
+        atencion.setLocationRelativeTo(null);*/
     }//GEN-LAST:event_btnContinuarActionPerformed
-    @Override
-    public void actualizar(Observable origen, Object evento) {
-        if(evento.equals(Fachada.Eventos.PuestoDisponible)){//ACA ESTA IMPLEMENTADO POR EL PUESTO, ACCEDO AL ENUM POR LA CLASE PUESTO
-                                //SI LO ESTOY HACIENDO POR FACHADA SERIA FACHADA.EVENTOS.PUESTODISPONIBLE
-           System.out.println("me actualize");
-           ff.asignarAtencion(puesto);
-        }  
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnContinuar;
     private javax.swing.JComboBox<Puesto> cboPuestos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel txtSector;
     // End of variables declaration//GEN-END:variables
+    
+    @Override
+    public void puestoAsignado(Puesto p,Trabajador t) {
+        String msg ="Se le ha asignado el " + p.toString();
+        JOptionPane.showMessageDialog(this, msg);
+        this.setVisible(false);
+        JDialog atencion = new TrabajadorAtencion(null,false,p,t);
+        atencion.setVisible(true);     
+        atencion.setLocationRelativeTo(null);
+    }
+
+    @Override
+    public void mostrarError(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
+    }
+
+   
+
+    
+    
 
     
 }

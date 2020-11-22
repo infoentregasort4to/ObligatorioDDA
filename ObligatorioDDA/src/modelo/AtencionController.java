@@ -36,14 +36,10 @@ public class AtencionController implements Observador
         return null;
     }         
     
-    private int pedirNumero()
-    {
-        return this.atenciones.size() + 1;
-    }
     
     public Atencion crearAtencionPendiente(Cliente cliente,Sector s)
     {
-       int numero = this.pedirNumero();       
+       int numero = s.getNum();       
        
        Atencion aa = new Atencion(numero,cliente,s);
        
@@ -53,7 +49,7 @@ public class AtencionController implements Observador
     }
     
     public Atencion crearAtencionConPuesto(Cliente cliente, Sector s, Puesto p) {
-       int numero = this.pedirNumero();       
+       int numero = s.getNum();       
        p.setPuestoDisponible(false);
        Atencion aa = new Atencion(numero,cliente,s,p);
        

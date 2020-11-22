@@ -1,13 +1,13 @@
 package vista;
 
-import controlador.Fachada;
+import controlador.VistaLogin;
 import javax.swing.JDialog;
-import modelo.Trabajador;
+
 import javax.swing.JOptionPane;
 
-public class Login extends javax.swing.JDialog {
+public abstract class Login extends javax.swing.JDialog implements VistaLogin {
 
-    private Fachada ff = controlador.Fachada.getInstancia();
+   
     
     public Login(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -83,74 +83,36 @@ public class Login extends javax.swing.JDialog {
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         String nom = tfNombre.getText();
-
         String pass = new String(tfPassword.getPassword());
-
-        Trabajador login = ff.login(nom, pass);
-
-        if(login==null)
-        {
-            JOptionPane.showMessageDialog(this, "Login incorrecto");
-        }
-        else
-        {
-            this.setVisible(false);// sacamos al login de la vista del user       
-            
-            JDialog puestos = new Puestos(null, false,login);
-            puestos.setVisible(true);       
-            puestos.setLocationRelativeTo(null);
-
-            //System.out.println("entro al login ");
-        }
+        llamarLogin(nom,pass);
     }//GEN-LAST:event_bLoginActionPerformed
-
+    
+    @Override
+    public void mostrarError(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
+    }
+    
     private void tfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPasswordActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Login dialog = new Login(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
-    }
-
+    public abstract String generarTitulo();
+    public abstract void llamarLogin(String nom,String pass);
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bLogin;
     private javax.swing.JLabel jLabel1;
@@ -158,4 +120,6 @@ public class Login extends javax.swing.JDialog {
     private javax.swing.JTextField tfNombre;
     private javax.swing.JPasswordField tfPassword;
     // End of variables declaration//GEN-END:variables
+
+    
 }

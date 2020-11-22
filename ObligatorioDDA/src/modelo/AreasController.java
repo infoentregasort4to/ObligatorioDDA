@@ -30,7 +30,7 @@ public class AreasController
         return null;
     }
    
-    public Trabajador login(String ci,String contrasena )
+    public Trabajador login(String ci,String contrasena ) throws AtencionException
     {
        for(Area a: areas){
           Trabajador t=a.obtenerTrabajador(ci,contrasena);
@@ -38,7 +38,7 @@ public class AreasController
               return t;
           }
        }
-       return null;
+       throw new AtencionException("El usuario no existe.");
     }
     
     public void agregarTrabajador(Sector s,Trabajador tnuevo)

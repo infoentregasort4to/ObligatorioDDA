@@ -25,13 +25,13 @@ public class ClienteController
         this.clientes.add(c);
     }
      
-    public Cliente getCliente(String ci)
+    public Cliente getCliente(String ci) throws AtencionException
     {
         for(Cliente c: this.clientes)
         {
             if(c.getCi().equals(ci))
                 return c;
         }        
-        return null;
+        throw new AtencionException("El usuario no existe.");
     }
 }

@@ -4,6 +4,7 @@ package vista;
 import controlador.ControladorPedirNumero;
 import controlador.VistaPedirNumero;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import modelo.Area;
 import modelo.Sector;
 
@@ -131,6 +132,11 @@ public class PedirNumero extends javax.swing.JDialog implements VistaPedirNumero
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtCi;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void mostrarMensaje(String msg) {
+        JOptionPane.showMessageDialog(this, msg);
+    }
 
     
 }

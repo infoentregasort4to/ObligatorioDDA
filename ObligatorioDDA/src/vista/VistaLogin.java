@@ -21,22 +21,20 @@ public class VistaLogin extends Login {
         super(parent, modal);
         controlador= new ControladorLogin(this);
     }
+    
+     @Override
+    public void llamarLogin(String nom, String pass) {
+        controlador.login(nom,pass);
+    }
 
     @Override
-    public void Ingresar(Object t) {
+    public void ingresar(Object obj) {
         dispose();
-        new Puestos(null, false,(Trabajador)t).setVisible(true);
+        new Puestos(null, false,(Trabajador)obj).setVisible(true);
     }
 
     @Override
     public String generarTitulo() {
         return "Login";
     }
-
-    @Override
-    public void llamarLogin(String nom, String pass) {
-        controlador.login(nom,pass);
-    }
-
-    
 }

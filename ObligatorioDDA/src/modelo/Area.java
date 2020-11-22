@@ -22,7 +22,7 @@ public class Area
 
     public ArrayList<Sector> getSectores()
     {
-        return this.sectores;
+        return sectores;
     }
 
     public void agregarSector(Sector sector)
@@ -45,7 +45,7 @@ public class Area
         return this.nombre;
     }
 
-    public Trabajador obtenerTrabajador(String ci, String contrasena) {
+    public Trabajador obtenerTrabajador(String ci, String contrasena) throws AtencionException {
         for(Sector s : sectores){
             Trabajador t=s.obtenerTrabajador(ci,contrasena);
             if(t!=null){
@@ -53,5 +53,10 @@ public class Area
             }
         }
         return null;
+    }
+
+    public Puesto buscarPuestoDisponible(Sector s) {
+        Puesto p= s.buscarPuestoDisponible();
+        return p;
     }
 }

@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
-
+package modelo;
 
 /**
  *
- * @author sebaa
+ * @author Martín Orue
  */
-public interface VistaLogin {
+public class AtencionException extends Exception {
     
-    public void mostrarError(String msg);
-    public void ingresar(Object obj);
-    
-    
+    public AtencionException(String mensaje){
+        super(mensaje);
+    }
 }

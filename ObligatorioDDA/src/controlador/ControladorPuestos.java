@@ -28,8 +28,9 @@ public class ControladorPuestos {
         //ff.agregar(this);
         this.vista=vista;
         this.trabajador=t;
-        this.sector = ff.obtenerSector(trabajador);
-        vista.mostrarPuestos(sector.getPuestos());
+        this.sector = ff.obtenerSectorTrabajador(trabajador);
+        vista.mostrarTitulo(sector.toString());
+        vista.mostrarPuestos(sector.getPuestosLibres());
     }
     public void asignarPuesto(Puesto p){
         
@@ -37,6 +38,8 @@ public class ControladorPuestos {
         vista.puestoAsignado(p,trabajador);
         
     }
+
+    
     
     
 }

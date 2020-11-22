@@ -12,4 +12,5 @@ package controlador;
 public interface VistaTrabajadorAtencion {
     public void mostrarTitulo(String t );
     public void mostrarAtencion(Object a);
+    public void mostrarInfo(String s);
 }

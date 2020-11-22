@@ -2,6 +2,7 @@ package modelo;
 
 import Observador.Observable;
 import java.util.ArrayList;
+import java.util.Calendar;
 import modelo.Area;
 import modelo.Atencion;
 import modelo.Cliente;
@@ -38,7 +39,7 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
         clientesC.agregarCliente(c);
     }
     
-    public Cliente getCliente(String ci)
+    public Cliente getCliente(String ci) throws AtencionException
     {
         return clientesC.getCliente(ci);
     }
@@ -71,7 +72,7 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
         areaC.agregarTrabajador(s,tnuevo);
     } 
     
-    public Trabajador login(String ci, String pwd)
+    public Trabajador login(String ci, String pwd) throws AtencionException
     {
         return areaC.login(ci, pwd);
     }
@@ -98,7 +99,7 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
         return areaC.getAreas();
     }
     
-    public Sector obtenerSector(Trabajador t)
+    public Sector obtenerSectorTrabajador(Trabajador t)
     {
         return areaC.obtenerSector(t);
     }
@@ -128,7 +129,9 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
        Puesto p= atencionC.puestoLibre(a,s);
        if(p!=null){
            Atencion aa= atencionC.crearAtencionConPuesto(cliente,s,p);
-           avisar(Eventos.NuevaAtencion);
+           Calendar cal = Calendar.getInstance();
+           aa.setFechaHora(cal.getTime());
+           avisar(Eventos.ComienzoAtencion);
            return aa;
        }
        Atencion aa= atencionC.crearAtencionPendiente(cliente,s);
@@ -138,8 +141,9 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
     
     public void comenzarAtencion(Atencion a, Puesto p)
     {
+        
+        atencionC.comenzarAtencion(a, p);
         avisar(Eventos.ComienzoAtencion);
-        atencionC.comenzarAtencion(a, p);  
         
     }
     
