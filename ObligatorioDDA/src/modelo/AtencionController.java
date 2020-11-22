@@ -101,7 +101,6 @@ public class AtencionController implements Observador
     public void finalizarAtencion(Atencion a, String d)
     {
         a.finalizarAtencion(d); // ya hace update atenciones set des='', hora=time where id = a.id //
-        atenciones.add(a);
     }
     public void asignarAtencion(Puesto p,Sector s){
         

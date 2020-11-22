@@ -48,6 +48,10 @@ public class Puesto extends Observable {//ESTA ES LA OPCION QUE VENIAMOS APLICAN
         this.disponible=true;        
     }
     
+    public Trabajador getTrabajador(){
+        return this.trabajador;
+    }
+    
     public void logout()
     {
         this.trabajador=null;

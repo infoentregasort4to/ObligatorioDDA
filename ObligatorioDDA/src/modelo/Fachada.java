@@ -99,9 +99,9 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
         if (p != null) {
             Atencion aa = atencionC.crearAtencionConPuesto(cliente, s, p);
             Calendar cal = Calendar.getInstance();
-            
+
             cal.setTime(new Date());
-            
+
 //            Date tiempoActual = cal.getTime();
 //            
 //            cal.add(Calendar.MINUTE, 10);
@@ -111,7 +111,6 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
 //            
 //            long tiempoTranscurrido = tiempoFuturo.getTime() - tiempoActual.getTime();
 //            long minutosTranscurridos = tiempoTranscurrido/(1000*60);
-            
             aa.setFechaHora(cal.getTime());
             avisar(Eventos.ComienzoAtencion);
             return aa;
@@ -122,15 +121,13 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
     }
 
     public void comenzarAtencion(Atencion a, Puesto p) {
-
         atencionC.comenzarAtencion(a, p);
         avisar(Eventos.ComienzoAtencion);
-
     }
 
     public void finalizarAtencion(Atencion a, String d) {
-        avisar(Eventos.FinAtencion);
         atencionC.finalizarAtencion(a, d);
+        avisar(Eventos.FinAtencion);
     }
 
     public Area obtenerAreaSector(Sector s) {

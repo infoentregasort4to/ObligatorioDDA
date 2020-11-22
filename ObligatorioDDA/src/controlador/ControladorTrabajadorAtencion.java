@@ -88,8 +88,8 @@ public class ControladorTrabajadorAtencion implements Observador {
     }
 
     public void cerrarYSeguir(String descripcion) {
-        this.atencion.getPuesto().setPuestoDisponible(true);
         ff.finalizarAtencion(this.atencion, descripcion);
+        vista.mostrarAtencion(buscarAtencionPendiente());
     }
     
 }

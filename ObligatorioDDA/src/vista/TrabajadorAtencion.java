@@ -40,23 +40,14 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
 
     @Override
     public void finYSalir() {
-
-        // guardar atencion 
-        controlador.logout(); // verificar si hay atencion pendiente
-
+        controlador.logout();
         this.setVisible(false);
         dispose();
-        //llamar al controlador para hacer el logout()
-        //llamo al controladorLogin para hacer el logout()
-        //llama al controladorPuestos para liberarPuesto()(controlando que el puesto no tenga número de atención asignado)
     }
 
     @Override
     public void finYSiguiente() {
-        //guardar la atencion:
-
         controlador.cerrarYSeguir(txtDesc.getText());
-        
     }
 
     @SuppressWarnings("unchecked")

@@ -28,7 +28,7 @@ public class ControladorMonitor implements Observador {
     @Override
     public void actualizar(Observable origen, Object evento) {
         if(origen == ff) {
-            if(evento.equals(Fachada.Eventos.NuevaAtencion)||evento.equals(Fachada.Eventos.ComienzoAtencion) ) {
+            if(evento.equals(Fachada.Eventos.NuevaAtencion)||evento.equals(Fachada.Eventos.ComienzoAtencion)) {
                 ArrayList<Atencion> a = ff.atencionesPendientes();
                 vista.MostrarListaAtencionesPendientes(a);
             }
