@@ -12,10 +12,8 @@ public class Puesto extends Observable {//ESTA ES LA OPCION QUE VENIAMOS APLICAN
 
     public Puesto(String nombre) 
     {
-        this.nombre = nombre;
-        
-    }
-    
+        this.nombre = nombre;       
+    }   
     
     public String getNombre()
     {
@@ -43,11 +41,16 @@ public class Puesto extends Observable {//ESTA ES LA OPCION QUE VENIAMOS APLICAN
     {
         return this.getNombre();
     }
+    
     public void setTrabajador(Trabajador t){
         avisar(Eventos.PuestoDisponible);//AVISO A QUIEN ME ESTE VIENDO
         this.trabajador= t;
-        this.disponible=true;
-        
+        this.disponible=true;        
+    }
+    
+    public void logout()
+    {
+        this.trabajador=null;
     }
     
 }

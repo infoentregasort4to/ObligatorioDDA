@@ -45,6 +45,18 @@ public class AreasController
     {
        s.agregarTrabajador(tnuevo);
     }
+
+    public Area obtenerAreaSector(Sector s) {
+        
+        for(Area a:areas)
+        {
+            if(a.obtenerAreaSector(s))
+            {
+                return a;
+            }
+        }
+        return null;
+    }
 }
 
 

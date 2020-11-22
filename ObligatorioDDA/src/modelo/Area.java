@@ -59,4 +59,16 @@ public class Area
         Puesto p= s.buscarPuestoDisponible();
         return p;
     }
+
+    public boolean obtenerAreaSector(Sector s)
+    {
+        for(Sector sec: sectores)
+        {
+            if(sec.equals(s))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

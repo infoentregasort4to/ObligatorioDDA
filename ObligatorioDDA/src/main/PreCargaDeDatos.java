@@ -326,6 +326,5 @@ public class PreCargaDeDatos
         f.agregarTrabajador(s12,mit24);   
         
         
-        ArrayList<Trabajador> mivar = f.getTrabajadores();
     }
 }

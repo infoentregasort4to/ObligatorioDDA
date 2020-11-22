@@ -14,7 +14,6 @@ import modelo.Trabajador;
 public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERVABLE Y QUE PASE TODO POR LA FACHADA
 {
     private ClienteController clientesC = new ClienteController();
-    private TrabajadoresController trabajadoresC = new TrabajadoresController();
     private AreasController areaC = new AreasController();
     private AtencionController atencionC = new AtencionController();
     
@@ -51,15 +50,7 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
         avisar(Eventos.PuestoDisponible);
         p.setTrabajador(t);
     }
-    public ArrayList<Trabajador> getTrabajadores()
-    {
-        return trabajadoresC.getTrabajadores();
-    }
-    
-    public Trabajador getTrabajador(String ci)
-    {        
-       return trabajadoresC.getTrabajador(ci);
-    }
+  
     public Atencion buscarAtencionPendiente(Sector s)
     {
         
@@ -74,19 +65,8 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
     
     public Trabajador login(String ci, String pwd) throws AtencionException
     {
-        return areaC.login(ci, pwd);
+       return areaC.login(ci, pwd);
     }
-
-    public void logout(Trabajador t)
-    {
-        trabajadoresC.logout(t);
-    }
-    
-    //FIN DE TRABAJADORES
-    
-    
-    //Puestos       
-    //FIN PUESTOS
     
     // Areas  
     public void agregarArea(Area a)
@@ -103,13 +83,7 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
     {
         return areaC.obtenerSector(t);
     }
-    //FIN AREAS
-    
-    // ATENCION
-   /* public void agregarObservador(Observador obs)
-    {
-        atencionC.agregar(obs);
-    }*/
+    //FIN AREAS  
     
     public ArrayList<Atencion> atencionesPendientes()
     {
@@ -117,15 +91,13 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
     }
     
     public void asignarAtencion(Puesto p,Sector s){
-        System.out.println("sdkjafhkfdjdsf");
         atencionC.asignarAtencion(p,s);
     }
     public Atencion obtenerAtencionPuesto(Puesto p){
         return atencionC.obtenerAtencionPuesto(p);
     }
     public Atencion crearAtencion(Cliente cliente,Area a,Sector s)
-    {
-       
+    {       
        Puesto p= atencionC.puestoLibre(a,s);
        if(p!=null){
            Atencion aa= atencionC.crearAtencionConPuesto(cliente,s,p);
@@ -153,5 +125,15 @@ public class Fachada extends Observable//UNA OPCION ES QUE LA FACHADA SEA OBSERV
         atencionC.finalizarAtencion(a, d); 
     }
     
-    //FIN ATENCIOn
+    public Area obtenerAreaSector(Sector s)
+    {
+        return areaC.obtenerAreaSector(s);
+    }
+    
+    public float calcularTiempoPromedioPuesto(Puesto p)
+    {
+        return atencionC.calcularTiempoPromedioPuesto(p);
+    }
+    
+    
 }

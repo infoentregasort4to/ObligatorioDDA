@@ -23,11 +23,46 @@ public class AtencionController implements Observador
                 atenciones.add(a);
         }        
         return atenciones;
-    }   
+    } 
+    
+    public float calcularTiempoPromedioPuesto(Puesto p)
+    {
+        float total = this.sumarTiemposPuesto(p);        
+        float promedio = total/this.cantAtencionesPuesto(p);        
+    
+        return promedio;
+    }
+    
+    private float sumarTiemposPuesto(Puesto p)
+    {
+        float total = 0;
+        for(Atencion a: this.atenciones)
+        {
+            if(a.getPuesto() != null)
+            {
+                if(a.getPuesto().equals(p))
+                    total += a.obtenerTiempoAtencion();                
+            }
+        }         
+        return total;
+    }
+    
+    private float cantAtencionesPuesto(Puesto p)
+    {
+        float cont = 0;
+        for(Atencion a: this.atenciones)
+        {
+            if(a.getPuesto() != null)
+            {
+                if(a.getPuesto().equals(p))
+                    cont++;
+            }
+        }        
+        return cont;
+    }    
     
     public Atencion getAtencionPendiente(Sector s)
-    {
-        
+    { 
         for(Atencion a: this.atenciones)
         {
             if(a.getSector().equals(s) && a.atencionPendiente())

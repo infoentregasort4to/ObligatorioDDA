@@ -32,19 +32,30 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
         super(parent, modal);
         initComponents();
         controlador= new ControladorTrabajadorAtencion(this,p,t);
-        this.setLocationRelativeTo(null);  
-        
+        this.setLocationRelativeTo(null);         
     } 
     
-    
-     private void finYSalir() {
+    @Override
+    public void finYSalir() {
+        
+       // guardar atencion 
+        
+        controlador.logout(); // verificar si hay atencion pendiente
+
+        
+        this.setVisible(false);
+        dispose();
         //llamar al controlador para hacer el logout()
         //llamo al controladorLogin para hacer el logout()
         //llama al controladorPuestos para liberarPuesto()(controlando que el puesto no tenga número de atención asignado)
     }
 
-    private void finYSiguiente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public void finYSiguiente() {
+       //guardar la atencion
+        
+        
+        //
     }
     
     @SuppressWarnings("unchecked")
@@ -84,45 +95,48 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
 
         jLabel2.setText("Atencion actual:");
 
-        nombreAtencion.setText("jLabel3");
-
-        txtInfo.setText("jLabel3");
+        nombreAtencion.setText("_sin_atencion_");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(23, 23, 23)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(txtInfo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(finYSiguiente)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(finYSalir)))
-                    .addComponent(nombreAtencion))
-                .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nombreAtencion))
+                            .addComponent(txtInfo))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(155, 155, 155)
+                                .addComponent(finYSiguiente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(finYSalir))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 31, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(txtInfo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nombreAtencion))
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(7, 7, 7)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(finYSalir)
                     .addComponent(finYSiguiente))
@@ -160,21 +174,17 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     public void mostrarAtencion(Object a) {
         if(a!=null){
             Atencion aa=(Atencion)a;
-            nombreAtencion.setText( "Numero: " + aa.getNumero() + " --- Cliente: " +aa.getCliente().toString());    
+            nombreAtencion.setText( "Numero: " + aa.getNumero() + " --- Cliente: " +aa.getCliente());    
         }
         else{
             nombreAtencion.setText("No hay atencion asignada");
-        }
-        
+        }        
     }
 
     @Override
-    public void mostrarInfo(String s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void mostrarInfo(String s)
+    {
+        txtInfo.setText(s);        
     }
-
-   
-
-
     
 }

@@ -21,10 +21,7 @@ public class Atencion  extends Observable {
         this.puesto=p;
         avisar(Eventos.nuevaAtencion);
     }
-
-   /* Atencion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }*/
+   
     public Sector getSector() {
         return sector;
     }
@@ -95,7 +92,6 @@ public class Atencion  extends Observable {
     
     public void comenzarAtencion(Puesto puesto)
     {
-        System.out.println(puesto);
         this.puesto = puesto;
         this.fechaHora = new Date();      
     }
@@ -109,6 +105,15 @@ public class Atencion  extends Observable {
     public boolean atencionPendiente()
     {
         return this.puesto == null;
+    }
+    
+    public float obtenerTiempoAtencion()
+    {
+        if(fechaHoraFin != null)
+        {
+            return fechaHoraFin.getTime() - fechaHora.getTime();
+        }
+        return 0;
     }
     
     @Override
