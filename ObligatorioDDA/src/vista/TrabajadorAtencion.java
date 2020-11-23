@@ -48,7 +48,6 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     
     @Override
     public void finYSiguiente() {        
-        controlador.guardarYSeguir(txtDesc.getText());
         txtDesc.setText("");
     }
 
@@ -144,7 +143,7 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     }//GEN-LAST:event_SalirActionPerformed
 
     private void finYSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finYSiguienteActionPerformed
-        finYSiguiente();
+        controlador.guardarYSeguir(txtDesc.getText());
     }//GEN-LAST:event_finYSiguienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

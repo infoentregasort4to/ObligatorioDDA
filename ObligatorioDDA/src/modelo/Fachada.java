@@ -102,8 +102,8 @@ public class Fachada extends Observable
         
         if (p != null)
         {
-            Atencion aa = atencionC.crearAtencionConPuesto(cliente, s, p);           
-            avisar(Eventos.ComienzoAtencion);
+            Atencion aa = atencionC.crearAtencionConPuesto(cliente, s, p);   
+            comenzarAtencion(aa,p);
             return aa;
         }
         
@@ -126,6 +126,7 @@ public class Fachada extends Observable
             throw new AtencionException("No es posible finalizar una atencion vacia!");
         } 
         atencionC.finalizarAtencion(a, d);
+        
         avisar(Eventos.FinAtencion);                
     }
 

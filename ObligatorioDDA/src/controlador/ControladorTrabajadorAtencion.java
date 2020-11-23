@@ -57,12 +57,10 @@ public class ControladorTrabajadorAtencion implements Observador {
     public void actualizar(Observable origen, Object evento) {
        if(origen == ff) {
             if(evento.equals(Fachada.Eventos.ComienzoAtencion)) {
-                Atencion a= ff.obtenerAtencionPuesto(this.p);
-                this.atencion = a;
-                vista.mostrarAtencion(a);                
-                this.cont++;                
-                vista.mostrarInfo(mostrarInfo());
-            }        
+                
+                this.atencion = ff.obtenerAtencionPuesto(this.p);
+                vista.mostrarAtencion(this.atencion);                 
+            }  
         }
     }
     
@@ -90,6 +88,7 @@ public class ControladorTrabajadorAtencion implements Observador {
     {         
         try{
             ff.finalizarAtencion(this.atencion, descripcion);
+            vista.finYSiguiente();
             vista.mostrarAtencion(buscarAtencionPendiente());
             vista.mostrarInfo(mostrarInfo());
         } catch (AtencionException ae) {

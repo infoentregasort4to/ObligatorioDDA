@@ -28,10 +28,12 @@ public class AtencionController
     public long calcularTiempoPromedioPuesto(Puesto p)
     {
         long total = this.sumarTiemposPuesto(p);
-        
-        long promedio = total/this.cantAtencionesPuesto(p);
-        
-        return promedio;
+        long cantidad=this.cantAtencionesPuesto(p);
+        if(cantidad>0){
+            long promedio = total/cantidad;
+            return promedio;
+        }
+        return 0;
     }
     
     private long sumarTiemposPuesto(Puesto p)
@@ -52,7 +54,8 @@ public class AtencionController
     
     private long cantAtencionesPuesto(Puesto p)
     {
-        long cont = 1;
+        
+        long cont = 0;
         for(Atencion a: this.atenciones)
         {
             if(a.getPuesto() != null)
@@ -107,6 +110,7 @@ public class AtencionController
     public void finalizarAtencion(Atencion a, String d)
     {
         a.finalizarAtencion(d);
+        a.getPuesto().setPuestoDisponible(true);
     }
     
     public void asignarAtencion(Puesto p,Sector s)

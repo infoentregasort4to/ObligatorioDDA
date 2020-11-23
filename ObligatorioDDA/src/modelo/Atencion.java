@@ -40,6 +40,7 @@ public class Atencion  extends Observable {
         this.sector=sector;
         this.numero = numero;
         this.cliente = cliente;
+        
         avisar(Eventos.nuevaAtencion);
     }
     
