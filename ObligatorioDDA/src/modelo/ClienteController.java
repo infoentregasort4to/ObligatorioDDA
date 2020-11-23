@@ -1,4 +1,3 @@
-
 package modelo;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class ClienteController
        return clientes;
     }  
     
-    public void setTipoCliente(TipoCliente tc)
+    public void agregarTipoCliente(TipoCliente tc)
     {
         this.tiposClientes.add(tc);
     }

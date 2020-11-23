@@ -1,18 +1,22 @@
 package vista;
 
-import controlador.VistaLogin;
+import controlador.ControladorLogin;
 import javax.swing.JDialog;
 
 import javax.swing.JOptionPane;
+import modelo.Trabajador;
+import controlador.ILogin;
 
-public abstract class Login extends javax.swing.JDialog implements VistaLogin {
-
-   
+public class Login extends javax.swing.JDialog implements ILogin {
+ 
+    ControladorLogin controlador;
     
-    public Login(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        this.setTitle("Login Trabajador");
+    public Login(java.awt.Frame parent, boolean modal)
+    {
+        super(parent, modal);        
         initComponents();
+        this.setTitle("Login Trabajador");
+        controlador = new ControladorLogin(this);        
     }
     
     @SuppressWarnings("unchecked")
@@ -52,7 +56,7 @@ public abstract class Login extends javax.swing.JDialog implements VistaLogin {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(bLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -61,14 +65,14 @@ public abstract class Login extends javax.swing.JDialog implements VistaLogin {
                             .addComponent(jLabel1))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                            .addComponent(tfPassword))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                            .addComponent(tfNombre)
+                            .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -76,9 +80,9 @@ public abstract class Login extends javax.swing.JDialog implements VistaLogin {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addComponent(bLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
@@ -86,20 +90,30 @@ public abstract class Login extends javax.swing.JDialog implements VistaLogin {
 
     private void bLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bLoginActionPerformed
         String nom = tfNombre.getText();
-        String pass = new String(tfPassword.getPassword());
-        llamarLogin(nom,pass);
+        String pass = new String(tfPassword.getPassword());        
+        controlador.login(nom,pass);
     }//GEN-LAST:event_bLoginActionPerformed
     
     @Override
-    public void mostrarError(String msg) {
+    public void ingresar(Object obj)
+    {
+       dispose();
+       JDialog SeleccionPuesto = new SeleccionPuesto(null, false,(Trabajador)obj);
+       SeleccionPuesto.setResizable(false);
+       SeleccionPuesto.setLocationRelativeTo(null);
+       SeleccionPuesto.setVisible(true);
+    }
+    
+    @Override
+    public void mostrarError(String msg)
+    {
         JOptionPane.showMessageDialog(this, msg);
     }
     
     private void tfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPasswordActionPerformed
-    public abstract String generarTitulo();
-    public abstract void llamarLogin(String nom,String pass);
+
     
     
     

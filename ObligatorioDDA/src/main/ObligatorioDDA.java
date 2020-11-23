@@ -1,16 +1,13 @@
 package main;
-import vista.*;
+import vista.General;
 
 public class ObligatorioDDA
 {    
     public static void main(String[] args)
     {
         PreCargaDeDatos datos = new PreCargaDeDatos();
-        datos.Cargar();  
-        
+        datos.Cargar();
         General gg = new General();
         gg.setVisible(true);
-        
-        
     }
 }

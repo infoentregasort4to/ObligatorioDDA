@@ -2,9 +2,6 @@ package controlador;
 
 import Observador.Observable;
 import Observador.Observador;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import modelo.Area;
 import modelo.Atencion;
 import modelo.AtencionException;
@@ -15,7 +12,7 @@ import modelo.Trabajador;
 
 public class ControladorTrabajadorAtencion implements Observador {
     
-    private VistaTrabajadorAtencion vista;
+    private ITrabajadorAtencion vista;
     private Fachada ff= Fachada.getInstancia();
     private Sector sector;
     private Puesto p;
@@ -24,7 +21,8 @@ public class ControladorTrabajadorAtencion implements Observador {
     private long tiempoA;
     private Atencion atencion;
     
-    public ControladorTrabajadorAtencion(VistaTrabajadorAtencion vista,Puesto p,Trabajador t){
+    public ControladorTrabajadorAtencion(ITrabajadorAtencion vista,Puesto p,Trabajador t)
+    {
         this.vista=vista;
         this.p=p;
         ff.agregar(this);        
@@ -35,11 +33,13 @@ public class ControladorTrabajadorAtencion implements Observador {
         vista.mostrarInfo(mostrarInfo());
     }
 
-    public Atencion getAtencionEnCurso() {
+    public Atencion getAtencionEnCurso()
+    {
         return atencion;
     }
 
-    public void setAtencion(Atencion atencion) {
+    public void setAtencion(Atencion atencion)
+    {
         this.atencion = atencion;
     }
     
@@ -54,9 +54,12 @@ public class ControladorTrabajadorAtencion implements Observador {
     }
     
     @Override
-    public void actualizar(Observable origen, Object evento) {
-       if(origen == ff) {
-            if(evento.equals(Fachada.Eventos.ComienzoAtencion)) {
+    public void actualizar(Observable origen, Object evento)
+    {
+       if(origen == ff)
+       {
+            if(evento.equals(Fachada.Eventos.ComienzoAtencion))
+            {
                 
                 this.atencion = ff.obtenerAtencionPuesto(this.p);
                 vista.mostrarAtencion(this.atencion);                 
@@ -76,11 +79,14 @@ public class ControladorTrabajadorAtencion implements Observador {
             vista.mostrarError("No es posible finalizar su sesion!");            
         }
     }
-    public void actualizarInfo(){
+    
+    public void actualizarInfo()
+    {
         cont++;
         this.tiempoA = ff.calcularTiempoPromedioPuesto(this.p);
         vista.actualizarInfo(Long.toString(this.tiempoA),Integer.toString(cont));
     }
+    
     public String mostrarInfo()
     {   
         String info = this.p + " " + "Area: " + this.aa + " Sector: " + this.sector;     
@@ -89,13 +95,16 @@ public class ControladorTrabajadorAtencion implements Observador {
 
     public void guardarYSeguir(String descripcion)
     {         
-        try{
+        try
+        {
             ff.finalizarAtencion(this.atencion, descripcion);
             vista.finYSiguiente();
             vista.mostrarAtencion(buscarAtencionPendiente());
             vista.mostrarInfo(mostrarInfo());
             actualizarInfo();
-        } catch (AtencionException ae) {
+        }
+        catch (AtencionException ae)
+        {
             String msg = ae.getMessage();
             vista.mostrarError(msg);
         }

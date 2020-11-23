@@ -1,9 +1,6 @@
 package modelo;
 
 import java.util.ArrayList;
-import modelo.Area;
-import modelo.Sector;
-import modelo.Trabajador;
 
 public class AreasController
 {
@@ -32,11 +29,11 @@ public class AreasController
    
     public Trabajador login(String ci,String contrasena ) throws AtencionException
     {
-       for(Area a: areas){
+       for(Area a: areas)
+       {
           Trabajador t=a.obtenerTrabajador(ci,contrasena);
-          if(t!= null){
-              return t;
-          }
+          if(t!= null)
+            return t;
        }
        throw new AtencionException("El usuario no existe.");
     }
@@ -51,9 +48,7 @@ public class AreasController
         for(Area a:areas)
         {
             if(a.obtenerAreaSector(s))
-            {
                 return a;
-            }
         }
         return null;
     }

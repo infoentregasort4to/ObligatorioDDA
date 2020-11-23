@@ -1,7 +1,6 @@
 package main;
 
 import modelo.Fachada;
-import java.util.ArrayList;
 import modelo.Area;
 import modelo.Cliente;
 import modelo.ClienteConCosto;
@@ -15,23 +14,22 @@ public class PreCargaDeDatos
     public void Cargar()
     {
         Fachada f = Fachada.getInstancia();
-        
-        ////////////////////////////////////////////
-        
+                
         //CREAR TIPOCLIENTES
         TipoCliente tc1 = new TipoCliente("ClienteConCosto");
         TipoCliente tc2 = new TipoCliente("ClienteExonerado");
-        TipoCliente tc3 = new TipoCliente("ClienteGestor");    
-        //cambiar nombre a agregarTipoCliente
-        f.setTipoCliente(tc1);
-        f.setTipoCliente(tc2);
-        f.setTipoCliente(tc3);  
+        TipoCliente tc3 = new TipoCliente("ClienteGestor"); 
+        
+        f.agregarTipoCliente(tc1);
+        f.agregarTipoCliente(tc2);
+        f.agregarTipoCliente(tc3); 
         ///////////////////////////////////////////////
+        
         //CREAR CLIENTES
-        Cliente c1 = new ClienteConCosto(tc1,"1236"," Seba","mail1@mail.com");
+        Cliente c1 = new ClienteConCosto(tc1,"1236","Seba","mail1@mail.com");
         Cliente c2 = new ClienteConCosto(tc2,"1237","Tincho","mail2@mail.com");
-        Cliente c3 = new ClienteConCosto(tc3,"1238"," Seba2","mail3@mail.com");
-        Cliente c4 = new ClienteConCosto(tc2,"1239"," John","mail4@mail.com");        
+        Cliente c3 = new ClienteConCosto(tc3,"1238","Seba2","mail3@mail.com");
+        Cliente c4 = new ClienteConCosto(tc2,"1239","John","mail4@mail.com");        
         
         f.agregarCliente(c1);
         f.agregarCliente(c2);
@@ -40,9 +38,9 @@ public class PreCargaDeDatos
         //////////////////////////////////////////////
         
         //CREAR SECTORES
-        Sector s1 = new Sector("Caja 1");
-        Sector s2 = new Sector("Caja 2");
-        Sector s3 = new Sector("Caja 3"); 
+        Sector s1 = new Sector("Area 1");
+        Sector s2 = new Sector("Area 2");
+        Sector s3 = new Sector("Area 3"); 
         
         Sector s4 = new Sector("Venta autos");
         Sector s5 = new Sector("Venta Calefones");
@@ -55,13 +53,15 @@ public class PreCargaDeDatos
         Sector s10 = new Sector("RMA1");
         Sector s11 = new Sector("RMA2");
         Sector s12 = new Sector("RMA3");
-        ////////////////////////////////////
+        ////////////////////////////////////        
+        
         //AREAS
         Area a1 = new Area("Caja");
         Area a2 = new Area("Ventas");
         Area a3 = new Area("Atencion al Cliente");
         Area a4 = new Area("RMA");
         //////////////////////////////////
+        
         //AGREGAR SECTORES A AREAS
         //CAJA
         a1.agregarSector(s1);
@@ -84,9 +84,7 @@ public class PreCargaDeDatos
         f.agregarArea(a1);
         f.agregarArea(a2);
         f.agregarArea(a3);
-        f.agregarArea(a4);
-        
-         
+        f.agregarArea(a4);   
         
         //CREAR PUESTOS
         Puesto p1 = new Puesto("Puesto 1");
@@ -296,8 +294,7 @@ public class PreCargaDeDatos
         Trabajador mit23 = new Trabajador("3005","Luciano","1234");
         Trabajador mit24 = new Trabajador("3006","Luciano","1234");
         
-        //AGREGAR TRABAJADORES A SECTORES
-        
+        //AGREGAR TRABAJADORES A SECTORES        
         f.agregarTrabajador(s1,mit1);
         f.agregarTrabajador(s1,mit2);
         
@@ -323,8 +320,6 @@ public class PreCargaDeDatos
         f.agregarTrabajador(s11,mit21);
         f.agregarTrabajador(s11,mit22);
         f.agregarTrabajador(s12,mit23);
-        f.agregarTrabajador(s12,mit24);   
-        
-        
+        f.agregarTrabajador(s12,mit24); 
     }
 }

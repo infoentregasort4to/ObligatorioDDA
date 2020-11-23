@@ -9,14 +9,14 @@ import modelo.Sector;
 import modelo.Trabajador;
 import Observador.Observador;
 import controlador.ControladorTrabajadorAtencion;
-import controlador.VistaTrabajadorAtencion;
 import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.Area;
 import modelo.Atencion;
+import controlador.ITrabajadorAtencion;
 
-public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrabajadorAtencion {
+public class TrabajadorAtencion extends javax.swing.JDialog implements ITrabajadorAtencion {
 
     private Atencion atencion;
 
@@ -63,10 +63,10 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
         jLabel2 = new javax.swing.JLabel();
         nombreAtencion = new javax.swing.JLabel();
         txtInfo = new javax.swing.JLabel();
-        txtTiempo = new javax.swing.JLabel();
         valorTiempo = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         txtCant = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,11 +92,11 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
 
         jLabel2.setText("Atencion actual:");
 
-        nombreAtencion.setText("_sin_atencion_");
+        nombreAtencion.setText("DISPONIBLE");
 
-        txtTiempo.setText("Tiempo promediode atencion ");
+        jLabel4.setText("Cantidad de atenciones:");
 
-        jLabel3.setText("Cantidad de atenciones");
+        jLabel5.setText("Tiempo Promedio de Atencion:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,20 +110,20 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
                             .addComponent(txtInfo)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nombreAtencion))
-                                    .addComponent(jLabel1))
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtTiempo)
-                                    .addComponent(jLabel3))
+                                        .addComponent(nombreAtencion, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(valorTiempo)
                                     .addComponent(txtCant))))
-                        .addContainerGap(124, Short.MAX_VALUE))
+                        .addGap(44, 44, 44))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -131,7 +131,7 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
                                 .addGap(18, 18, 18)
                                 .addComponent(Salir))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 31, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,13 +142,13 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nombreAtencion)
-                    .addComponent(txtTiempo)
-                    .addComponent(valorTiempo))
+                    .addComponent(valorTiempo)
+                    .addComponent(jLabel5))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(txtCant))
+                    .addComponent(txtCant)
+                    .addComponent(jLabel4))
                 .addGap(7, 7, 7)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -174,13 +174,13 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     private javax.swing.JButton finYSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreAtencion;
     private javax.swing.JLabel txtCant;
     private javax.swing.JTextArea txtDesc;
     private javax.swing.JLabel txtInfo;
-    private javax.swing.JLabel txtTiempo;
     private javax.swing.JLabel valorTiempo;
     // End of variables declaration//GEN-END:variables
 

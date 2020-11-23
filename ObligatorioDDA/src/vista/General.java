@@ -1,16 +1,17 @@
 package vista;
 
-import Observador.Observador;
 import modelo.Fachada;
 import javax.swing.JDialog;
-import controlador.VistaMonitor;
 
-public class General extends javax.swing.JFrame {
+public class General extends javax.swing.JFrame
+{
 
     private Fachada ff = modelo.Fachada.getInstancia();
     
-    public General() {
+    public General()
+    {
         setLocationRelativeTo(null);
+        this.setResizable(false);
         this.setTitle("PANTALLA GENERAL");        
         initComponents(); 
     }
@@ -60,60 +61,59 @@ public class General extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jButton3))
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(28, 28, 28))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addContainerGap())))
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton4))
-                .addGap(27, 27, 27))
+                    .addComponent(jButton4)
+                    .addComponent(jButton1))
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       //JDialog ll = new Login(null, false);
-       //ll.setVisible(true);       
-       //ll.setLocationRelativeTo(null);
-       new VistaLogin(null, false).setVisible(true);
+       JDialog Login = new Login(null, false);
+       Login.setResizable(false);
+       Login.setLocationRelativeTo(null);
+       Login.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       JDialog nn = new AreasCliente(null, false);
-       nn.setVisible(true);       
-       nn.setLocationRelativeTo(null);
+       JDialog AreasCliente = new SeleccionArea(null, false);
+       AreasCliente.setResizable(false);
+       AreasCliente.setLocationRelativeTo(null);
+       AreasCliente.setVisible(true);       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //JDialog mm = new Monitor(null, false);
-        //mm.setVisible(true);
-        /*ff.agregarObservador((Observador) mm); // el unico observador*/
-        //mm.setLocationRelativeTo(null);
-        new MonitorTrabajador(null,false).setVisible(true);
+       JDialog MonitorTrabajador = new MonitorTrabajador(null, false);
+       MonitorTrabajador.setResizable(false);
+       MonitorTrabajador.setLocationRelativeTo(null);
+       MonitorTrabajador.setVisible(true); 
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new MonitorCliente(null,false).setVisible(true);
+       JDialog MonitorCliente = new MonitorCliente(null, false);
+       MonitorCliente.setResizable(false);
+       MonitorCliente.setLocationRelativeTo(null);
+       MonitorCliente.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
    

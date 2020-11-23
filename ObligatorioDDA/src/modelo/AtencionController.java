@@ -1,19 +1,16 @@
 package modelo;
 
-import Observador.Observable;
-import Observador.Observador;
 import java.util.ArrayList;
-import modelo.Atencion;
-import modelo.Cliente;
-import modelo.Puesto;
 
 public class AtencionController
 {
     private ArrayList<Atencion> atenciones = new ArrayList();
 
-    public AtencionController() {
+    public AtencionController()
+    {
         
     }
+    
     public ArrayList<Atencion> atencionesPendientes()
     {
         ArrayList<Atencion> atenciones= new ArrayList();
@@ -24,6 +21,7 @@ public class AtencionController
         }        
         return atenciones;
     } 
+    
     public ArrayList<Atencion> atencionesEnCurso()
     {
         ArrayList<Atencion> atenciones= new ArrayList();
@@ -63,8 +61,7 @@ public class AtencionController
     }
     
     private long cantAtencionesPuesto(Puesto p)
-    {
-        
+    {        
         long cont = 0;
         for(Atencion a: this.atenciones)
         {
@@ -132,10 +129,12 @@ public class AtencionController
         }
     }
     
-    public Atencion obtenerAtencionPuesto(Puesto p){
-    
-        for(Atencion a : atenciones){
-            if(a.getPuesto().equals(p) && a.getFechaHoraFin()==null){
+    public Atencion obtenerAtencionPuesto(Puesto p)
+    {    
+        for(Atencion a : atenciones)
+        {
+            if(a.getPuesto().equals(p) && a.getFechaHoraFin()==null)
+            {
                 return a;
             }
         }

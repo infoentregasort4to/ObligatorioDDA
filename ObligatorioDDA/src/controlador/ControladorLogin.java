@@ -1,5 +1,3 @@
-
-
 package controlador;
 
 import Observador.Observable;
@@ -9,15 +7,18 @@ import modelo.Fachada;
 import modelo.Trabajador;
 
 
-public class ControladorLogin {
-    
+public class ControladorLogin
+{    
     private Fachada ff= Fachada.getInstancia();
-    private VistaLogin vista;
+    private ILogin vista;
     
-    public ControladorLogin(VistaLogin vista){
+    public ControladorLogin(ILogin vista)
+    {
         this.vista=vista;
     }
-     public void login(String usuario, String contrasena) {
+    
+    public void login(String usuario, String contrasena)
+    {
         try{
             Trabajador trabajador = ff.login(usuario, contrasena);
             vista.ingresar(trabajador);
@@ -26,7 +27,4 @@ public class ControladorLogin {
             vista.mostrarError(msg);
         }
     }
-    
-    
-    
 }

@@ -1,95 +1,103 @@
 package modelo;
 import java.util.Date;
 import Observador.Observable;
-import static java.time.Instant.now;
 import java.time.temporal.ChronoUnit;
 
-public class Atencion  extends Observable {
-    
-    //si no tiene puesto esta "cola", si tiene puesto pero no tiene fecha de fin esta en "atencion" y si tiene fecha de fin es "finalizada"    
-    
+public class Atencion  extends Observable
+{    
     private int numero;     
     private Puesto puesto; 
     private Cliente cliente;
     private Date fechaHora;
     private String descripcion;   
     private Date fechaHoraFin;
-    private Sector sector;
+    private Sector sector;    
+    public enum Eventos{nuevaAtencion;}
     
-    public Atencion(int numero, Cliente cliente, Sector s, Puesto p) {
+    public Atencion(int numero, Cliente cliente, Sector s, Puesto p) // atencion sin espera
+    {
         this.sector=s;
         this.numero = numero;
         this.cliente = cliente;
         this.puesto=p;
         avisar(Eventos.nuevaAtencion);
     }
-   
-    public Sector getSector() {
-        return sector;
-    }
-
-    public void setSector(Sector sector) {
-        this.sector = sector;
-    }
     
-    
-    public enum Eventos{nuevaAtencion;}
-    
-    public Atencion(int numero, Cliente cliente,Sector sector)
+    public Atencion(int numero, Cliente cliente,Sector sector) // atencion con espera
     {
         this.sector=sector;
         this.numero = numero;
-        this.cliente = cliente;
-        
+        this.cliente = cliente;        
         avisar(Eventos.nuevaAtencion);
     }
+   
+    public Sector getSector()
+    {
+        return sector;
+    }
+
+    public void setSector(Sector sector)
+    {
+        this.sector = sector;
+    }
     
-    public int getNumero() {
+    public int getNumero()
+    {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(int numero)
+    {
         this.numero = numero;
     }
 
-    public Puesto getPuesto() {
+    public Puesto getPuesto()
+    {
         return puesto;
     }
 
-    public void setPuesto(Puesto puesto) {
+    public void setPuesto(Puesto puesto)
+    {
         this.puesto = puesto;
     }
 
-    public Cliente getCliente() {
+    public Cliente getCliente()
+    {
         return cliente;
     }
 
-    public void setCliente(Cliente cliente) {
+    public void setCliente(Cliente cliente)
+    {
         this.cliente = cliente;
     }
 
-    public Date getFechaHora() {
+    public Date getFechaHora()
+    {
         return fechaHora;
     }
 
-    public void setFechaHora(Date fecha_hora) {
-        
+    public void setFechaHora(Date fecha_hora)
+    {        
         this.fechaHora = fecha_hora;
     }
 
-    public String getDescripcion() {
+    public String getDescripcion()
+    {
         return descripcion;
     }
 
-    public void setDescripcion(String descripcion) {
+    public void setDescripcion(String descripcion)
+    {
         this.descripcion = descripcion;
     }
 
-    public Date getFechaHoraFin() {
+    public Date getFechaHoraFin()
+    {
         return fechaHoraFin;
     }
 
-    public void setFechaHoraFin(Date fechaHoraFin) {
+    public void setFechaHoraFin(Date fechaHoraFin)
+    {
         this.fechaHoraFin = fechaHoraFin;
     }
     
@@ -109,7 +117,9 @@ public class Atencion  extends Observable {
     {
         return this.puesto == null;
     }
-    public boolean atencionEnCurso(){
+    
+    public boolean atencionEnCurso()
+    {
         return this.puesto!=null && this.fechaHoraFin==null;
     }
     
@@ -135,9 +145,7 @@ public class Atencion  extends Observable {
         str += (this.puesto!=null) ? this.puesto.getNombre(): "";
         str += "||Nro: " + this.numero ; 
         str += "||Cliente: " + this.cliente.getNombre()+ " ";   
-        str += "-- TIEMPO PROMEDIO PENDIENTE";
-                
+        str += "-- TIEMPO PROMEDIO PENDIENTE";                
         return str;
-    }
-    
+    }    
 }

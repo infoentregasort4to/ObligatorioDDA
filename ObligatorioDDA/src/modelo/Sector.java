@@ -2,8 +2,8 @@ package modelo;
 
 import java.util.ArrayList;
 
-public class Sector {
-    
+public class Sector
+{    
     private String nombre;
     private int num;
     private ArrayList<Puesto> puestos = new ArrayList();
@@ -14,13 +14,17 @@ public class Sector {
         this.nombre = nombre;
 
     }
+    
     public String getNombre()
     {
         return nombre;
     }
-    public int getNum(){
+    
+    public int getNum()
+    {
         return num++;
     }
+    
     public void setNombre(String nombre)
     {
         this.nombre = nombre;
@@ -35,7 +39,8 @@ public class Sector {
     {
         this.puestos.add(pnuevo);
     }
-    public ArrayList<Puesto> getPuestosLibres() //los libres de ese sector
+    
+    public ArrayList<Puesto> getPuestosLibres()
     {
         ArrayList<Puesto> losLibres = new ArrayList();
 
@@ -46,59 +51,68 @@ public class Sector {
         }        
         return losLibres;
     }
+    
     public void agregarTrabajador(Trabajador t)
     {        
         trabajadores.add(t);
     }
+    
     public ArrayList<Trabajador> getTrabajadores()
     {
         return trabajadores;
     }
-    public Trabajador obtenerTrabajador(String ci, String contrasena) throws AtencionException{
-        for(Trabajador t: trabajadores){
-            
+    
+    public Trabajador obtenerTrabajador(String ci, String contrasena) throws AtencionException
+    {
+        for(Trabajador t: trabajadores)
+        {            
             if(t.getCi().equals(ci) && t.getContrasena().equals(contrasena))
             {
                 return t;
-            }
-        
+            }        
         }
-        return null;
-    
+        return null;    
     }
+    
     public Trabajador tieneTrabajador(Trabajador t)
     {
-        for(Trabajador trabajador: trabajadores){
-        
+        for(Trabajador trabajador: trabajadores)
+        {        
             if(trabajador.equals(t))
             {
                 return t;
             }
-        }
-        
+        }        
         return null;
     }
-    public void ocuparPuesto(String p,Trabajador t){
-        for(Puesto pp : puestos){
-            if(pp.getNombre() == p){
+    
+    public void ocuparPuesto(String p,Trabajador t)
+    {
+        for(Puesto pp : puestos)
+        {
+            if(pp.getNombre() == p)
+            {
                 pp.setTrabajador(t);
             }
         }
     }
+    
     @Override
-    public String toString(){
+    public String toString()
+    {
         return this.nombre;
     }
 
-    public Puesto buscarPuestoDisponible() {
+    public Puesto buscarPuestoDisponible()
+    {
         Puesto pp= null;
-        for(Puesto p : puestos ){
-            if(p.puestoDisponible()){
+        for(Puesto p : puestos )
+        {
+            if(p.puestoDisponible())
+            {
                 pp=p;
             }
         }
         return pp;
-    }
-
-    
+    }    
 }

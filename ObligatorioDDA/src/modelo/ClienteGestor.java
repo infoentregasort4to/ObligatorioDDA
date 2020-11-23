@@ -1,7 +1,7 @@
 package modelo;
 
-public class ClienteGestor extends Cliente{
-
+public class ClienteGestor extends Cliente
+{
     public ClienteGestor(TipoCliente tipoCliente, String ci, String nombre, String email)
     {
         super(tipoCliente, ci, nombre, email);

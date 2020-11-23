@@ -1,14 +1,13 @@
 package modelo;
 import Observador.Observable;
 
-public class Puesto extends Observable {//ESTA ES LA OPCION QUE VENIAMOS APLICANDO QUE ME PARECE TAMBIEN VALIDA, 
-                                        //CAPAZ QUE AL FINAL POR REQUERIMIENTOS NECESITAMOS QUE LA FACHADA TAMBIEN SEA OBSERVABLE
-    
+public class Puesto extends Observable
+{    
     private String nombre;
     private Trabajador trabajador;
     private boolean disponible;
 
-    public enum Eventos{PuestoDisponible,PuestoOcupado;}//EN ESTE CASO EL PUESTO MANDA LOS EVENTOS
+    public enum Eventos{PuestoDisponible,PuestoOcupado;}
 
     public Puesto(String nombre) 
     {
@@ -24,10 +23,13 @@ public class Puesto extends Observable {//ESTA ES LA OPCION QUE VENIAMOS APLICAN
     {
         this.nombre = nombre;
     }
-    public void setPuestoDisponible(boolean b){
+    public void setPuestoDisponible(boolean b)
+    {
         this.disponible=b;
     }
-    public boolean puestoDisponible(){
+    
+    public boolean puestoDisponible()
+    {
         return this.disponible;
     }
     
@@ -42,19 +44,20 @@ public class Puesto extends Observable {//ESTA ES LA OPCION QUE VENIAMOS APLICAN
         return this.getNombre();
     }
     
-    public void setTrabajador(Trabajador t){
-        avisar(Eventos.PuestoDisponible);//AVISO A QUIEN ME ESTE VIENDO
+    public void setTrabajador(Trabajador t)
+    {
+        avisar(Eventos.PuestoDisponible);
         this.trabajador= t;
         this.disponible=true;        
     }
     
-    public Trabajador getTrabajador(){
+    public Trabajador getTrabajador()
+    {
         return this.trabajador;
     }
     
     public void logout()
     {
         this.trabajador=null;
-    }
-    
+    }   
 }

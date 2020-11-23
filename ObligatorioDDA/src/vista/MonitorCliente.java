@@ -2,12 +2,12 @@
 package vista;
 
 import controlador.ControladorMonitorCliente;
-import controlador.VistaMonitor;
 import java.util.ArrayList;
 import modelo.Atencion;
+import controlador.IMonitor;
 
 
-public class MonitorCliente extends javax.swing.JDialog implements VistaMonitor {
+public class MonitorCliente extends javax.swing.JDialog implements IMonitor {
 
     
      public MonitorCliente(java.awt.Frame parent, boolean modal) {
@@ -44,8 +44,8 @@ public class MonitorCliente extends javax.swing.JDialog implements VistaMonitor 
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -53,9 +53,9 @@ public class MonitorCliente extends javax.swing.JDialog implements VistaMonitor 
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
