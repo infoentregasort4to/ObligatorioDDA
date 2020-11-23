@@ -16,10 +16,10 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelo.Puesto;
 import modelo.Sector;
-import controlador.ISeleccionPuesto;
+import controlador.VistaSeleccionPuesto;
 
 
-public class SeleccionPuesto extends javax.swing.JDialog implements ISeleccionPuesto {
+public class SeleccionPuesto extends javax.swing.JDialog implements VistaSeleccionPuesto {
 
     private Trabajador trabajador;
     private Fachada ff= Fachada.getInstancia();

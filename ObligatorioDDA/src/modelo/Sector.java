@@ -15,17 +15,18 @@ public class Sector
 
     }
     
-    public int cantTrabajadores(){
-           
+    public int cantTrabajadores()
+    {           
         int cant=0;
-        for(Puesto p : puestos){
-            if(!p.puestoLibre()){
-            cant++;
+        for(Puesto p : puestos)
+        {
+            if(!p.puestoLibre())
+            {
+                cant++;
             }      
         }
         return cant;
-    }
-    
+    }   
     
     public String getNombre()
     {

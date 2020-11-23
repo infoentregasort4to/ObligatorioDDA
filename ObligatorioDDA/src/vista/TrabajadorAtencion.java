@@ -14,9 +14,9 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.Area;
 import modelo.Atencion;
-import controlador.ITrabajadorAtencion;
+import controlador.VistaTrabajadorAtencion;
 
-public class TrabajadorAtencion extends javax.swing.JDialog implements ITrabajadorAtencion {
+public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrabajadorAtencion {
 
     private Atencion atencion;
 

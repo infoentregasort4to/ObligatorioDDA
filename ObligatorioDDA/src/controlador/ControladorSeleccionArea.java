@@ -4,10 +4,10 @@ import modelo.Fachada;
 
 public class ControladorSeleccionArea
 {
-    private ISeleccionArea vista;
+    private VistaSeleccionArea vista;
     private Fachada ff= Fachada.getInstancia();
     
-    public ControladorSeleccionArea(ISeleccionArea vista)
+    public ControladorSeleccionArea(VistaSeleccionArea vista)
     {
         this.vista=vista;
         vista.MostrarAreas(ff.getAreas());

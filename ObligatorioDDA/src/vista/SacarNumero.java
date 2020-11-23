@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Area;
 import modelo.Sector;
-import controlador.ISacarNumero;
+import controlador.VistaSacarNumero;
 
 
-public class SacarNumero extends javax.swing.JDialog implements ISacarNumero {
+public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero {
 
     private ControladorSacarNumero controlador;
     
@@ -123,8 +123,8 @@ public class SacarNumero extends javax.swing.JDialog implements ISacarNumero {
     {
         for(Sector s : sectores)
         {
-            cboSectores.addItem(s);
-        }
+            cboSectores.addItem(s);            
+        } 
     }    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

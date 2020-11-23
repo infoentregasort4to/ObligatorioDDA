@@ -12,7 +12,7 @@ import modelo.Trabajador;
 
 public class ControladorTrabajadorAtencion implements Observador {
     
-    private ITrabajadorAtencion vista;
+    private VistaTrabajadorAtencion vista;
     private Fachada ff= Fachada.getInstancia();
     private Sector sector;
     private Puesto p;
@@ -21,7 +21,7 @@ public class ControladorTrabajadorAtencion implements Observador {
     private long tiempoA;
     private Atencion atencion;
     
-    public ControladorTrabajadorAtencion(ITrabajadorAtencion vista,Puesto p,Trabajador t)
+    public ControladorTrabajadorAtencion(VistaTrabajadorAtencion vista,Puesto p,Trabajador t)
     {
         this.vista=vista;
         this.p=p;

@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import modelo.Area;
 import modelo.Cliente;
-import controlador.ISeleccionArea;
+import controlador.VistaSeleccionArea;
 
-public class SeleccionArea extends javax.swing.JDialog implements ISeleccionArea {
+public class SeleccionArea extends javax.swing.JDialog implements VistaSeleccionArea {
 
     ControladorSeleccionArea controlador;
     

@@ -10,10 +10,10 @@ import modelo.Sector;
 public class ControladorSacarNumero
 {
     private Fachada ff = Fachada.getInstancia();
-    private ISacarNumero vista;
+    private VistaSacarNumero vista;
     private Area a;
 
-    public ControladorSacarNumero(ISacarNumero vista, Area a)
+    public ControladorSacarNumero(VistaSacarNumero vista, Area a)
     {
         this.vista = vista;
         this.a = a;
@@ -26,8 +26,7 @@ public class ControladorSacarNumero
         {
             if (ff.atencionesPendientes().isEmpty())
             {
-                altaAtencion(ci, s);
-                vista.LimpiarValores();
+                altaAtencion(ci, s);                
             } 
             else if (clienteEnEspera(ci))
             {
@@ -57,6 +56,7 @@ public class ControladorSacarNumero
         {
             vista.mostrarMensaje("Su atencion ha quedado en espera");
         }
+        vista.LimpiarValores();
     }
 
     private boolean clienteEnEspera(String ci)

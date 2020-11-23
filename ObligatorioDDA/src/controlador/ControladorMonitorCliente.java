@@ -9,9 +9,9 @@ import modelo.Fachada;
 public class ControladorMonitorCliente implements Observador
 {
     private Fachada ff= Fachada.getInstancia();
-    private IMonitorCliente vista;
+    private VistaMonitorCliente vista;
     
-    public ControladorMonitorCliente(IMonitorCliente vista)
+    public ControladorMonitorCliente(VistaMonitorCliente vista)
     {
         ff.agregar(this);
         this.vista = vista;

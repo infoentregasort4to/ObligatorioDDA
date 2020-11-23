@@ -1,6 +1,6 @@
 package controlador;
 
-public interface ILogin
+public interface VistaLogin
 {    
     public void mostrarError(String msg);
     public void ingresar(Object obj);  

@@ -10,9 +10,9 @@ import modelo.Trabajador;
 public class ControladorLogin
 {    
     private Fachada ff= Fachada.getInstancia();
-    private ILogin vista;
+    private VistaLogin vista;
     
-    public ControladorLogin(ILogin vista)
+    public ControladorLogin(VistaLogin vista)
     {
         this.vista=vista;
     }

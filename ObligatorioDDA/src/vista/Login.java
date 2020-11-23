@@ -5,9 +5,9 @@ import javax.swing.JDialog;
 
 import javax.swing.JOptionPane;
 import modelo.Trabajador;
-import controlador.ILogin;
+import controlador.VistaLogin;
 
-public class Login extends javax.swing.JDialog implements ILogin {
+public class Login extends javax.swing.JDialog implements VistaLogin {
  
     ControladorLogin controlador;
     

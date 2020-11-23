@@ -1,6 +1,6 @@
 package controlador;
 
-public interface ITrabajadorAtencion
+public interface VistaTrabajadorAtencion
 {
     public void mostrarTitulo(String t );
     public void mostrarAtencion(Object a);

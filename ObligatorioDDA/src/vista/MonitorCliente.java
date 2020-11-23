@@ -4,10 +4,10 @@ package vista;
 import controlador.ControladorMonitorCliente;
 import java.util.ArrayList;
 import modelo.Atencion;
-import controlador.IMonitorCliente;
+import controlador.VistaMonitorCliente;
 
 
-public class MonitorCliente extends javax.swing.JDialog implements IMonitorCliente
+public class MonitorCliente extends javax.swing.JDialog implements VistaMonitorCliente
 {
     public MonitorCliente(java.awt.Frame parent, boolean modal)
     {

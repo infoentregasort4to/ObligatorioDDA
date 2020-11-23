@@ -9,11 +9,11 @@ import modelo.Trabajador;
 public class ControladorSeleccionPuesto
 {    
     private Fachada ff=Fachada.getInstancia();
-    private ISeleccionPuesto vista;
+    private VistaSeleccionPuesto vista;
     private Sector sector;
     private Trabajador trabajador;
 
-    public ControladorSeleccionPuesto(ISeleccionPuesto vista, Trabajador t)
+    public ControladorSeleccionPuesto(VistaSeleccionPuesto vista, Trabajador t)
     {
         this.vista=vista;
         this.trabajador=t;

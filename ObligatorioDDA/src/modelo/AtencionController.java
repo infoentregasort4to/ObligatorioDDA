@@ -4,12 +4,7 @@ import java.util.ArrayList;
 
 public class AtencionController
 {
-    private ArrayList<Atencion> atenciones = new ArrayList();
-
-    public AtencionController()
-    {
-        
-    }
+    private ArrayList<Atencion> atenciones = new ArrayList();   
     
     public ArrayList<Atencion> atencionesPendientes()
     {
@@ -33,18 +28,23 @@ public class AtencionController
         return atenciones;
     } 
     
-    public long calcularPromedioSector(Sector s){
-        
+    public long calcularPromedioSector(Sector s)
+    {        
         long totalPuestos=0;
         
-        
-        for(Atencion a: atenciones){
-            if(a.getSector().equals(s) && a.getFechaHoraFin()!=null){
+        for(Atencion a: atenciones)
+        {
+            if(a.getSector().equals(s) && a.getFechaHoraFin()!=null)
+            {
               totalPuestos +=  calcularTiempoPromedioPuesto(a.getPuesto());
             }
         }
-        long promedio = totalPuestos/s.cantTrabajadores();
-        return totalPuestos;
+        int cant = s.cantTrabajadores();
+        if(cant>0)
+        {
+            return totalPuestos/cant;
+        }
+        return 0;
     }
     
     public long calcularTiempoPromedioPuesto(Puesto p)
