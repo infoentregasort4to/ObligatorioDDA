@@ -90,6 +90,10 @@ public class Fachada extends Observable
     {
         return atencionC.atencionesPendientes();
     }
+    public ArrayList<Atencion> atencionesEnCurso()
+    {
+        return atencionC.atencionesEnCurso();
+    }
 
     public void asignarAtencion(Puesto p, Sector s)
     {

@@ -1,36 +1,41 @@
+
 package vista;
 
-import Observador.Observable;
-import Observador.Observador;
-import controlador.ControladorMonitor;
+import controlador.ControladorMonitorCliente;
 import controlador.VistaMonitor;
-import modelo.Fachada;
 import java.util.ArrayList;
 import modelo.Atencion;
 
-public class Monitor extends javax.swing.JDialog implements VistaMonitor{
 
-    private Fachada ff = modelo.Fachada.getInstancia();
-    ControladorMonitor controlador;
+public class MonitorCliente extends javax.swing.JDialog implements VistaMonitor {
+
     
-    public Monitor(java.awt.Frame parent, boolean modal) {
+     public MonitorCliente(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        controlador= new ControladorMonitor(this);
-        this.setTitle("Monitor");
-        
+        ControladorMonitorCliente controlador = new ControladorMonitorCliente(this);
+        this.setTitle("Monitor Clientes"); 
     }
-       
+    
+    @Override
+    public void mostrarAtenciones(ArrayList<Atencion> a) {
+        this.listaAtenciones.setListData(a.toArray());
+    }
+
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         listaAtenciones = new javax.swing.JList();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jScrollPane1.setViewportView(listaAtenciones);
+
+        jLabel1.setText("Puestos");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -38,29 +43,28 @@ public class Monitor extends javax.swing.JDialog implements VistaMonitor{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
    
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList listaAtenciones;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void MostrarListaAtencionesPendientes(ArrayList<Atencion> a) {
-             this.listaAtenciones.setListData(a.toArray());
-    }
 }

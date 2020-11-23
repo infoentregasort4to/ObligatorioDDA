@@ -76,11 +76,14 @@ public class ControladorTrabajadorAtencion implements Observador {
             vista.mostrarError("No es posible finalizar su sesion!");            
         }
     }
-    
+    public void actualizarInfo(){
+        cont++;
+        this.tiempoA = ff.calcularTiempoPromedioPuesto(this.p);
+        vista.actualizarInfo(Long.toString(this.tiempoA),Integer.toString(cont));
+    }
     public String mostrarInfo()
     {   
-        this.tiempoA = ff.calcularTiempoPromedioPuesto(this.p);
-        String info = this.p + " " + "Area: " + this.aa + " Sector: " + this.sector + " Cant. Atenciones: " + this.cont + " Tiempo Promedio Atencion: " + this.tiempoA;        
+        String info = this.p + " " + "Area: " + this.aa + " Sector: " + this.sector;     
         return info;
     }
 
@@ -91,6 +94,7 @@ public class ControladorTrabajadorAtencion implements Observador {
             vista.finYSiguiente();
             vista.mostrarAtencion(buscarAtencionPendiente());
             vista.mostrarInfo(mostrarInfo());
+            actualizarInfo();
         } catch (AtencionException ae) {
             String msg = ae.getMessage();
             vista.mostrarError(msg);

@@ -4,8 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/sebaa/Documents/GitHub/ObligatorioDDA/ObligatorioDDA/src/modelo/Atencion.java</file>
+            <file>file:/C:/Users/sebaa/Documents/GitHub/ObligatorioDDA/ObligatorioDDA/src/controlador/ControladorPedirNumero.java</file>
+            <file>file:/C:/Users/sebaa/Documents/GitHub/ObligatorioDDA/ObligatorioDDA/src/controlador/ControladorMonitorCliente.java</file>
             <file>file:/C:/Users/sebaa/Documents/GitHub/ObligatorioDDA/ObligatorioDDA/src/modelo/AtencionController.java</file>
+            <file>file:/C:/Users/sebaa/Documents/GitHub/ObligatorioDDA/ObligatorioDDA/src/vista/MonitorTrabajador.java</file>
+            <file>file:/C:/Users/sebaa/Documents/GitHub/ObligatorioDDA/ObligatorioDDA/src/vista/MonitorCliente.java</file>
             <file>file:/C:/Users/sebaa/Documents/GitHub/ObligatorioDDA/ObligatorioDDA/src/modelo/Fachada.java</file>
+            <file>file:/C:/Users/sebaa/Documents/GitHub/ObligatorioDDA/ObligatorioDDA/src/main/PreCargaDeDatos.java</file>
         </group>
     </open-files>
 </project-private>

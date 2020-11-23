@@ -6,5 +6,5 @@ import modelo.Atencion;
 
 
 public interface VistaMonitor {
-    public void MostrarListaAtencionesPendientes(ArrayList<Atencion> a);
+    public void mostrarAtenciones(ArrayList<Atencion> a);
 }

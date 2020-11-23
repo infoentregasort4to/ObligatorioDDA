@@ -8,6 +8,7 @@ public interface VistaTrabajadorAtencion {
     public void mostrarError(String s);
     public void Salir();
     public void finYSiguiente();
+    public void actualizarInfo(String t,String c);
     
     
 }

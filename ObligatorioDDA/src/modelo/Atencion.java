@@ -109,6 +109,9 @@ public class Atencion  extends Observable {
     {
         return this.puesto == null;
     }
+    public boolean atencionEnCurso(){
+        return this.puesto!=null && this.fechaHoraFin==null;
+    }
     
     public long calcularTiempo()
     {   
@@ -128,10 +131,10 @@ public class Atencion  extends Observable {
     @Override
     public String toString()
     {
-        String str = this.sector.toString();        
-        str += (this.puesto!=null) ? this.puesto.getNombre(): "-- PENDIENTE de ATENCION";
-        str += "-- " + this.numero + " "; 
-        str += "-- " + this.cliente.getNombre()+ " ";   
+        String str = this.sector.toString() +"||";        
+        str += (this.puesto!=null) ? this.puesto.getNombre(): "";
+        str += "||Nro: " + this.numero ; 
+        str += "||Cliente: " + this.cliente.getNombre()+ " ";   
         str += "-- TIEMPO PROMEDIO PENDIENTE";
                 
         return str;

@@ -24,6 +24,16 @@ public class AtencionController
         }        
         return atenciones;
     } 
+    public ArrayList<Atencion> atencionesEnCurso()
+    {
+        ArrayList<Atencion> atenciones= new ArrayList();
+        for(Atencion a: this.atenciones)
+        {
+            if(a.atencionEnCurso())
+                atenciones.add(a);
+        }        
+        return atenciones;
+    } 
     
     public long calcularTiempoPromedioPuesto(Puesto p)
     {
@@ -125,7 +135,7 @@ public class AtencionController
     public Atencion obtenerAtencionPuesto(Puesto p){
     
         for(Atencion a : atenciones){
-            if(a.getPuesto().equals(p)){
+            if(a.getPuesto().equals(p) && a.getFechaHoraFin()==null){
                 return a;
             }
         }

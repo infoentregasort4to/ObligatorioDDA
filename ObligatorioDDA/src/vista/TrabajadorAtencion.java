@@ -63,6 +63,10 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
         jLabel2 = new javax.swing.JLabel();
         nombreAtencion = new javax.swing.JLabel();
         txtInfo = new javax.swing.JLabel();
+        txtTiempo = new javax.swing.JLabel();
+        valorTiempo = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtCant = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -90,6 +94,10 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
 
         nombreAtencion.setText("_sin_atencion_");
 
+        txtTiempo.setText("Tiempo promediode atencion ");
+
+        jLabel3.setText("Cantidad de atenciones");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,13 +107,23 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
+                            .addComponent(txtInfo)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(nombreAtencion))
+                                    .addComponent(jLabel1))
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txtTiempo)
+                                    .addComponent(jLabel3))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nombreAtencion))
-                            .addComponent(txtInfo))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(valorTiempo)
+                                    .addComponent(txtCant))))
+                        .addContainerGap(124, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -123,9 +141,14 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(nombreAtencion))
+                    .addComponent(nombreAtencion)
+                    .addComponent(txtTiempo)
+                    .addComponent(valorTiempo))
                 .addGap(19, 19, 19)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(txtCant))
                 .addGap(7, 7, 7)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -151,10 +174,14 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     private javax.swing.JButton finYSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreAtencion;
+    private javax.swing.JLabel txtCant;
     private javax.swing.JTextArea txtDesc;
     private javax.swing.JLabel txtInfo;
+    private javax.swing.JLabel txtTiempo;
+    private javax.swing.JLabel valorTiempo;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -180,6 +207,12 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     @Override
     public void mostrarError(String s) {
         JOptionPane.showMessageDialog(this, s);
+    }
+
+    @Override
+    public void actualizarInfo(String tiempo,String cantidad) {
+        valorTiempo.setText(tiempo);
+        txtCant.setText(cantidad);
     }
 
 }
