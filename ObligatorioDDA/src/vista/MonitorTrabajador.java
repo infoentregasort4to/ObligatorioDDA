@@ -93,9 +93,5 @@ public class MonitorTrabajador extends javax.swing.JDialog implements IMonitorTr
         this.listaAtenciones.setListData(a.toArray());
     }
     
-    @Override
-    public void mostrarTiempos(ArrayList<String> tiempos)
-    {
-        this.listaTiempos.setListData(tiempos.toArray());
-    }
+    
 }

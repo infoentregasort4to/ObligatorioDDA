@@ -6,5 +6,5 @@ import modelo.Atencion;
 public interface IMonitorTrabajador
 {
     public void mostrarAtenciones(ArrayList<Atencion> a);
-    public void mostrarTiempos(ArrayList<String> tiempos);
+    
 }

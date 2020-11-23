@@ -33,6 +33,20 @@ public class AtencionController
         return atenciones;
     } 
     
+    public long calcularPromedioSector(Sector s){
+        
+        long totalPuestos=0;
+        
+        
+        for(Atencion a: atenciones){
+            if(a.getSector().equals(s) && a.getFechaHoraFin()!=null){
+              totalPuestos +=  calcularTiempoPromedioPuesto(a.getPuesto());
+            }
+        }
+        long promedio = totalPuestos/s.cantTrabajadores();
+        return totalPuestos;
+    }
+    
     public long calcularTiempoPromedioPuesto(Puesto p)
     {
         long total = this.sumarTiemposPuesto(p);
@@ -43,7 +57,7 @@ public class AtencionController
         }
         return 0;
     }
-    
+
     private long sumarTiemposPuesto(Puesto p)
     {
         long total = 0;

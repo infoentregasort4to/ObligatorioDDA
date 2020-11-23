@@ -15,7 +15,6 @@ public class AreasController
     {
         return this.areas;
     }
-    
     public Sector obtenerSector(Trabajador t)
     {
         for (Area a : areas)
@@ -26,7 +25,6 @@ public class AreasController
         }
         return null;
     }
-   
     public Trabajador login(String ci,String contrasena ) throws AtencionException
     {
        for(Area a: areas)

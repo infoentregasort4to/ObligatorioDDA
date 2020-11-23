@@ -21,10 +21,13 @@ public class Fachada extends Observable
     {
         return cg;
     }
-
-    private Fachada() {
+    public ArrayList<String> devolverTiempos(ArrayList<Atencion> a){
+        ArrayList<String> tiempos= new ArrayList();
+        for (Atencion aa : a){
+            tiempos.add(Long.toString(atencionC.calcularPromedioSector(aa.getSector())));
+        }
+        return tiempos;
     }
-
     public void agregarTipoCliente(TipoCliente tc)
     {
         clientesC.agregarTipoCliente(tc);

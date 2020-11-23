@@ -17,7 +17,7 @@ public class ControladorMonitorTrabajador implements Observador
         this.vista=vista;
         ArrayList<Atencion> a = ff.atencionesPendientes();
         vista.mostrarAtenciones(a);
-        vista.mostrarTiempos(this.mostrarTiempos(a));
+       
     }
     
     public ArrayList<String> mostrarTiempos( ArrayList<Atencion> atenciones)
@@ -42,7 +42,6 @@ public class ControladorMonitorTrabajador implements Observador
             {
                 ArrayList<Atencion> a = ff.atencionesPendientes();
                 vista.mostrarAtenciones(a);
-                vista.mostrarTiempos(this.mostrarTiempos(a));
             }
         }   
     }    
