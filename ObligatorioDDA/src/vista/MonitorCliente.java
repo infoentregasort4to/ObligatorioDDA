@@ -4,24 +4,24 @@ package vista;
 import controlador.ControladorMonitorCliente;
 import java.util.ArrayList;
 import modelo.Atencion;
-import controlador.IMonitor;
+import controlador.IMonitorCliente;
 
 
-public class MonitorCliente extends javax.swing.JDialog implements IMonitor {
-
-    
-     public MonitorCliente(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        initComponents();
-        ControladorMonitorCliente controlador = new ControladorMonitorCliente(this);
-        this.setTitle("Monitor Clientes"); 
+public class MonitorCliente extends javax.swing.JDialog implements IMonitorCliente
+{
+    public MonitorCliente(java.awt.Frame parent, boolean modal)
+    {
+       super(parent, modal);
+       initComponents();
+       ControladorMonitorCliente controlador = new ControladorMonitorCliente(this);
+       this.setTitle("Monitor Clientes"); 
     }
     
     @Override
-    public void mostrarAtenciones(ArrayList<Atencion> a) {
+    public void mostrarAtenciones(ArrayList<Atencion> a)
+    {
         this.listaAtenciones.setListData(a.toArray());
     }
-
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -44,8 +44,8 @@ public class MonitorCliente extends javax.swing.JDialog implements IMonitor {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -67,4 +67,7 @@ public class MonitorCliente extends javax.swing.JDialog implements IMonitor {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JList listaAtenciones;
     // End of variables declaration//GEN-END:variables
+
+
+    
 }

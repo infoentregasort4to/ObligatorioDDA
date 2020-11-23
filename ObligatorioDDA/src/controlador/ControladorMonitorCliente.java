@@ -9,12 +9,12 @@ import modelo.Fachada;
 public class ControladorMonitorCliente implements Observador
 {
     private Fachada ff= Fachada.getInstancia();
-    private IMonitor vista;
+    private IMonitorCliente vista;
     
-    public ControladorMonitorCliente(IMonitor vista)
+    public ControladorMonitorCliente(IMonitorCliente vista)
     {
         ff.agregar(this);
-        this.vista=vista;
+        this.vista = vista;
         vista.mostrarAtenciones(ff.atencionesEnCurso());
     }
     

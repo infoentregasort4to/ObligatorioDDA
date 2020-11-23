@@ -28,7 +28,7 @@ public class SacarNumero extends javax.swing.JDialog implements ISacarNumero {
         cboSectores = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listSectoresTiempos = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtCi = new javax.swing.JTextField();
@@ -38,7 +38,7 @@ public class SacarNumero extends javax.swing.JDialog implements ISacarNumero {
 
         jLabel1.setText("Seleccione un sector");
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listSectoresTiempos);
 
         jLabel2.setText("Espera estimada para cada Sector");
 
@@ -119,12 +119,12 @@ public class SacarNumero extends javax.swing.JDialog implements ISacarNumero {
     }
     
     @Override
-    public void MostrarSectores(ArrayList <Sector> sectores)
+    public void MostrarSectores(ArrayList<Sector> sectores)
     {
         for(Sector s : sectores)
         {
             cboSectores.addItem(s);
-        }    
+        }
     }    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -133,8 +133,8 @@ public class SacarNumero extends javax.swing.JDialog implements ISacarNumero {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JList<String> listSectoresTiempos;
     private javax.swing.JTextField txtCi;
     // End of variables declaration//GEN-END:variables
 

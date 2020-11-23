@@ -38,9 +38,9 @@ public class PreCargaDeDatos
         //////////////////////////////////////////////
         
         //CREAR SECTORES
-        Sector s1 = new Sector("Area 1");
-        Sector s2 = new Sector("Area 2");
-        Sector s3 = new Sector("Area 3"); 
+        Sector s1 = new Sector("Caja 1");
+        Sector s2 = new Sector("Caja 2");
+        Sector s3 = new Sector("Caja 3"); 
         
         Sector s4 = new Sector("Venta autos");
         Sector s5 = new Sector("Venta Calefones");
@@ -56,7 +56,7 @@ public class PreCargaDeDatos
         ////////////////////////////////////        
         
         //AREAS
-        Area a1 = new Area("Caja");
+        Area a1 = new Area("Cajas");
         Area a2 = new Area("Ventas");
         Area a3 = new Area("Atencion al Cliente");
         Area a4 = new Area("RMA");

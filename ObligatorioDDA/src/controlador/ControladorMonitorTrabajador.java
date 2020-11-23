@@ -9,13 +9,28 @@ import modelo.Fachada;
 public class ControladorMonitorTrabajador implements Observador
 {
     private Fachada ff= Fachada.getInstancia();
-    private IMonitor vista;
+    private IMonitorTrabajador vista;
     
-    public ControladorMonitorTrabajador(IMonitor vista)
+    public ControladorMonitorTrabajador(IMonitorTrabajador vista)
     {
         ff.agregar(this);
         this.vista=vista;
-        vista.mostrarAtenciones(ff.atencionesPendientes());
+        ArrayList<Atencion> a = ff.atencionesPendientes();
+        vista.mostrarAtenciones(a);
+        vista.mostrarTiempos(this.mostrarTiempos(a));
+    }
+    
+    public ArrayList<String> mostrarTiempos( ArrayList<Atencion> atenciones)
+    {
+        ArrayList<String> aux = new ArrayList();
+        
+        for(Atencion aa: atenciones)
+        {
+            long tiempo = ff.calcularTiempoPromedioPuesto(aa.getPuesto());            
+            aux.add(Long.toString(tiempo));
+        }
+        
+        return aux; 
     }
     
     @Override
@@ -27,6 +42,7 @@ public class ControladorMonitorTrabajador implements Observador
             {
                 ArrayList<Atencion> a = ff.atencionesPendientes();
                 vista.mostrarAtenciones(a);
+                vista.mostrarTiempos(this.mostrarTiempos(a));
             }
         }   
     }    

@@ -29,8 +29,7 @@ public class ControladorTrabajadorAtencion implements Observador {
         this.sector=ff.obtenerSectorTrabajador(t);         
         this.aa = ff.obtenerAreaSector(this.sector);
         vista.mostrarAtencion(buscarAtencionPendiente());
-        vista.mostrarTitulo(t.toString());
-        vista.mostrarInfo(mostrarInfo());
+        vista.mostrarTitulo(t.toString());        
     }
 
     public Atencion getAtencionEnCurso()
@@ -86,21 +85,13 @@ public class ControladorTrabajadorAtencion implements Observador {
         this.tiempoA = ff.calcularTiempoPromedioPuesto(this.p);
         vista.actualizarInfo(Long.toString(this.tiempoA),Integer.toString(cont));
     }
-    
-    public String mostrarInfo()
-    {   
-        String info = this.p + " " + "Area: " + this.aa + " Sector: " + this.sector;     
-        return info;
-    }
-
     public void guardarYSeguir(String descripcion)
     {         
         try
         {
             ff.finalizarAtencion(this.atencion, descripcion);
             vista.finYSiguiente();
-            vista.mostrarAtencion(buscarAtencionPendiente());
-            vista.mostrarInfo(mostrarInfo());
+            vista.mostrarAtencion(buscarAtencionPendiente());            
             actualizarInfo();
         }
         catch (AtencionException ae)

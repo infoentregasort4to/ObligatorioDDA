@@ -142,11 +142,11 @@ public class Atencion  extends Observable
     @Override
     public String toString()
     {
-        String str = this.sector.toString() +"||";        
-        str += (this.puesto!=null) ? this.puesto.getNombre(): "";
-        str += "||Nro: " + this.numero ; 
-        str += "||Cliente: " + this.cliente.getNombre()+ " ";   
-        str += "-- TIEMPO PROMEDIO PENDIENTE";                
+        String str = this.sector.toString() +"| ";        
+        str += (this.puesto!=null) ? this.puesto.getNombre(): " Pendiente ";
+        str += "| Nro: " + this.numero ; 
+        str += "| Cliente: " + this.cliente.getNombre()+ " ";
+        
         return str;
     }    
 }

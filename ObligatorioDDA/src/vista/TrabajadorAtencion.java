@@ -200,11 +200,6 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements ITrabajad
     }
 
     @Override
-    public void mostrarInfo(String s) {
-        txtInfo.setText(s);
-    }
-
-    @Override
     public void mostrarError(String s) {
         JOptionPane.showMessageDialog(this, s);
     }
