@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import Observador.Observable;
@@ -12,15 +7,12 @@ import java.util.Calendar;
 import java.util.Date;
 import modelo.Area;
 import modelo.Atencion;
+import modelo.AtencionException;
 import modelo.Fachada;
 import modelo.Puesto;
 import modelo.Sector;
 import modelo.Trabajador;
 
-/**
- *
- * @author sebaa
- */
 public class ControladorTrabajadorAtencion implements Observador {
     
     private VistaTrabajadorAtencion vista;
@@ -29,7 +21,7 @@ public class ControladorTrabajadorAtencion implements Observador {
     private Puesto p;
     private Area aa;
     private int cont;
-    private float tiempoA;
+    private long tiempoA;
     private Atencion atencion;
     
     public ControladorTrabajadorAtencion(VistaTrabajadorAtencion vista,Puesto p,Trabajador t){
@@ -50,11 +42,11 @@ public class ControladorTrabajadorAtencion implements Observador {
     public void setAtencion(Atencion atencion) {
         this.atencion = atencion;
     }
- 
     
-    
-    public Atencion buscarAtencionPendiente(){
-        Atencion a= ff.buscarAtencionPendiente(sector);
+    public Atencion buscarAtencionPendiente()
+    {       
+        this.atencion = null;
+        Atencion a = ff.buscarAtencionPendiente(sector);
         if(a!=null){            
             ff.comenzarAtencion(a,p);
         }
@@ -68,27 +60,41 @@ public class ControladorTrabajadorAtencion implements Observador {
                 Atencion a= ff.obtenerAtencionPuesto(this.p);
                 this.atencion = a;
                 vista.mostrarAtencion(a);                
-                this.cont++;
-                this.tiempoA = ff.calcularTiempoPromedioPuesto(this.p);
+                this.cont++;                
                 vista.mostrarInfo(mostrarInfo());
             }        
         }
     }
     
     public void logout()
-    {
-        this.p.logout();
+    {        
+        if(this.atencion == null)
+        {
+            this.p.logout();
+            vista.Salir();
+        }
+        else
+        {
+            vista.mostrarError("No es posible finalizar su sesion!");            
+        }
     }
     
     public String mostrarInfo()
     {   
+        this.tiempoA = ff.calcularTiempoPromedioPuesto(this.p);
         String info = this.p + " " + "Area: " + this.aa + " Sector: " + this.sector + " Cant. Atenciones: " + this.cont + " Tiempo Promedio Atencion: " + this.tiempoA;        
         return info;
     }
 
-    public void cerrarYSeguir(String descripcion) {
-        ff.finalizarAtencion(this.atencion, descripcion);
-        vista.mostrarAtencion(buscarAtencionPendiente());
+    public void guardarYSeguir(String descripcion)
+    {         
+        try{
+            ff.finalizarAtencion(this.atencion, descripcion);
+            vista.mostrarAtencion(buscarAtencionPendiente());
+            vista.mostrarInfo(mostrarInfo());
+        } catch (AtencionException ae) {
+            String msg = ae.getMessage();
+            vista.mostrarError(msg);
+        }
     }
-    
 }

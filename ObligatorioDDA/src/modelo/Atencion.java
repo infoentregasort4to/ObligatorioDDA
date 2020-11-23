@@ -1,8 +1,8 @@
 package modelo;
 import java.util.Date;
 import Observador.Observable;
-import java.util.Calendar;
-import java.util.concurrent.TimeUnit;
+import static java.time.Instant.now;
+import java.time.temporal.ChronoUnit;
 
 public class Atencion  extends Observable {
     
@@ -109,20 +109,19 @@ public class Atencion  extends Observable {
         return this.puesto == null;
     }
     
-    public long calcularTiempo(Date dateInicio, Date dateFinal) {
-    long diferencia=dateInicio.getTime()-dateFinal.getTime();
-    long   minutos = TimeUnit.MILLISECONDS.toSeconds(diferencia);
-    return minutos;
-    }
+    public long calcularTiempo()
+    {   
+       long segundos = ChronoUnit.SECONDS.between(fechaHora.toInstant(),fechaHoraFin.toInstant());
+       return segundos ;
+    }   
     
-    public float obtenerTiempoAtencion()
+    public long obtenerTiempoAtencion()
     {
         if(fechaHoraFin != null)
         {
-            return calcularTiempo(fechaHoraFin,fechaHora);
+            return calcularTiempo();
         }
-        return 0;
-        
+        return 0;        
     }
     
     @Override

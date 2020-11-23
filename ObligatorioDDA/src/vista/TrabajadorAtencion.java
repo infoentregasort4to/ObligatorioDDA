@@ -12,6 +12,7 @@ import controlador.ControladorTrabajadorAtencion;
 import controlador.VistaTrabajadorAtencion;
 import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JOptionPane;
 import modelo.Area;
 import modelo.Atencion;
 
@@ -39,22 +40,23 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     }
 
     @Override
-    public void finYSalir() {
-        controlador.logout();
+    public void Salir()
+    {        
         this.setVisible(false);
         dispose();
     }
-
+    
     @Override
-    public void finYSiguiente() {
-        controlador.cerrarYSeguir(txtDesc.getText());
+    public void finYSiguiente() {        
+        controlador.guardarYSeguir(txtDesc.getText());
+        txtDesc.setText("");
     }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        finYSalir = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
         finYSiguiente = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDesc = new javax.swing.JTextArea();
@@ -65,10 +67,10 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        finYSalir.setText("FINALIZAR Y SALIR");
-        finYSalir.addActionListener(new java.awt.event.ActionListener() {
+        Salir.setText("SALIR");
+        Salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finYSalirActionPerformed(evt);
+                SalirActionPerformed(evt);
             }
         });
 
@@ -106,12 +108,11 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
                             .addComponent(txtInfo))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(155, 155, 155)
                                 .addComponent(finYSiguiente)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(finYSalir))
+                                .addGap(18, 18, 18)
+                                .addComponent(Salir))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 31, Short.MAX_VALUE))))
         );
@@ -130,7 +131,7 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(finYSalir)
+                    .addComponent(Salir)
                     .addComponent(finYSiguiente))
                 .addContainerGap())
         );
@@ -138,16 +139,16 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void finYSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finYSalirActionPerformed
-        finYSalir();
-    }//GEN-LAST:event_finYSalirActionPerformed
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        controlador.logout();
+    }//GEN-LAST:event_SalirActionPerformed
 
     private void finYSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finYSiguienteActionPerformed
         finYSiguiente();
     }//GEN-LAST:event_finYSiguienteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton finYSalir;
+    private javax.swing.JButton Salir;
     private javax.swing.JButton finYSiguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -175,6 +176,11 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     @Override
     public void mostrarInfo(String s) {
         txtInfo.setText(s);
+    }
+
+    @Override
+    public void mostrarError(String s) {
+        JOptionPane.showMessageDialog(this, s);
     }
 
 }
