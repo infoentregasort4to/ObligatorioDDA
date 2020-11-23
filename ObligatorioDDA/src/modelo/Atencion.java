@@ -103,8 +103,9 @@ public class Atencion  extends Observable
     
     public void comenzarAtencion(Puesto puesto)
     {
+        puesto.setPuestoDisponible(false);
         this.puesto = puesto;
-        this.fechaHora = new Date();      
+        this.fechaHora = new Date();         
     }
     
     public void finalizarAtencion(String d)
