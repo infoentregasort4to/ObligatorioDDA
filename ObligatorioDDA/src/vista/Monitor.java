@@ -61,9 +61,6 @@ public class Monitor extends javax.swing.JDialog implements VistaMonitor{
 
     @Override
     public void MostrarListaAtencionesPendientes(ArrayList<Atencion> a) {
-        
-        if(a.size()>0){
              this.listaAtenciones.setListData(a.toArray());
-        }   
     }
 }

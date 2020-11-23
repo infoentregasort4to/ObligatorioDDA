@@ -1,6 +1,8 @@
 package modelo;
 import java.util.Date;
 import Observador.Observable;
+import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 public class Atencion  extends Observable {
     
@@ -13,7 +15,7 @@ public class Atencion  extends Observable {
     private String descripcion;   
     private Date fechaHoraFin;
     private Sector sector;
-
+    
     public Atencion(int numero, Cliente cliente, Sector s, Puesto p) {
         this.sector=s;
         this.numero = numero;
@@ -107,14 +109,20 @@ public class Atencion  extends Observable {
         return this.puesto == null;
     }
     
+    public long calcularTiempo(Date dateInicio, Date dateFinal) {
+    long diferencia=dateInicio.getTime()-dateFinal.getTime();
+    long   minutos = TimeUnit.MILLISECONDS.toSeconds(diferencia);
+    return minutos;
+    }
+    
     public float obtenerTiempoAtencion()
     {
         if(fechaHoraFin != null)
         {
-            float tiempoAtencion = fechaHoraFin.getTime() - fechaHora.getTime();
-            return tiempoAtencion;
+            return calcularTiempo(fechaHoraFin,fechaHora);
         }
         return 0;
+        
     }
     
     @Override

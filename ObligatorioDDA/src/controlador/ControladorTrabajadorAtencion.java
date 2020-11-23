@@ -25,11 +25,10 @@ public class ControladorTrabajadorAtencion implements Observador {
     
     private VistaTrabajadorAtencion vista;
     private Fachada ff= Fachada.getInstancia();
-    
     private Sector sector;
     private Puesto p;
     private Area aa;
-    private int cont; // de atenciones
+    private int cont;
     private float tiempoA;
     private Atencion atencion;
     

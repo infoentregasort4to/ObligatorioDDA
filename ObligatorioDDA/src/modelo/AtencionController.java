@@ -29,7 +29,6 @@ public class AtencionController implements Observador
     {
         float total = this.sumarTiemposPuesto(p);        
         float promedio = total/this.cantAtencionesPuesto(p);        
-    
         return promedio;
     }
     
