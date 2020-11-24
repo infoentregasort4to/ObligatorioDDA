@@ -142,13 +142,16 @@ public class AtencionController
             a.comenzarAtencion(p);
         }
     }
-     public int cantNumerosEspera(Sector s){
+     public int cantNumerosEspera(Sector s)
+     {
         int cant=0;
-        for(Atencion a : atenciones){
-               if(a.getSector().equals(s) && a.getPuesto()==null){
-                   cant++;
-               }
+        for(Atencion a : atenciones)
+        {
+            if(a.getSector().equals(s) && a.getPuesto()==null)
+            {
+                cant++;
             }
+         }
         return cant;
     }
     
@@ -161,29 +164,35 @@ public class AtencionController
         return suma;
     }
     
-    public long tiempoPromedioAtencionSector(Sector s){
-        
+    public long tiempoPromedioAtencionSector(Sector s)
+    {        
         long res =0;
-        if(s.cantPuestos()>0){
+        if(s.cantPuestos()>0)
+        {
             res=sumaPromedios(s)/s.cantPuestos();
         }
         return res;
     }
     
-    public long esperaEstimadaSector(Sector s){
+    public long esperaEstimadaSector(Sector s)
+    {
         long res=0;
-        if(s.cantTrabajadores()>0){
+        
+        if(s.cantTrabajadores()>0)
+        {
             res =(tiempoPromedioAtencionSector(s)*cantNumerosEspera(s))/s.cantTrabajadores();
         }
         return res;
     }
     
-    public ArrayList<String> tiemposPromediosAtencion(Area a){
-            
+    public ArrayList<String> tiemposPromediosAtencion(Area a)
+    {            
         ArrayList<String> esperas= new ArrayList();
-        for(Sector s : a.getSectores()){
-        String e= Long.toString(this.tiempoPromedioAtencionSector(s));
-        esperas.add(e);
+        
+        for(Sector s : a.getSectores())
+        {
+            String e= Long.toString(this.tiempoPromedioAtencionSector(s));
+            esperas.add(e);
         }
         return esperas;
     }
@@ -206,4 +215,17 @@ public class AtencionController
         Puesto p= a.buscarPuestoDisponible(s);        
         return p;
     }    
+
+    public ArrayList<String> tiemposPromediosAtenciones(ArrayList<Atencion> atenciones)
+    {
+        ArrayList<String> aa = new ArrayList();
+        
+        for(Atencion att: atenciones)
+        {
+           String e= Long.toString(this.tiempoPromedioAtencionSector(att.getSector()));
+           aa.add(e);
+        }        
+        
+        return aa;
+    }
 }

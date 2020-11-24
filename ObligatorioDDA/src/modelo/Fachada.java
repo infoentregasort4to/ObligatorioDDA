@@ -153,13 +153,8 @@ public class Fachada extends Observable
         return esperas;
     }
     
-    public ArrayList<String> tiemposPromediosAtenciones(ArrayList<Atencion> atenciones ){
-    
-        ArrayList<String> esperas= new ArrayList();
-        for(Atencion a : atenciones){
-            
-        }
-        
-        return esperas;
+    public ArrayList<String> tiemposPromediosAtenciones(ArrayList<Atencion> atenciones)
+    {
+        return atencionC.tiemposPromediosAtenciones(atenciones);        
     }
 }
