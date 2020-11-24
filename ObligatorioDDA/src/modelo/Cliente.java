@@ -1,6 +1,6 @@
 package modelo;
 
-public abstract class Cliente
+public abstract class Cliente 
 {    
     private TipoCliente tipoCliente;    
     private String ci;
@@ -17,7 +17,6 @@ public abstract class Cliente
     }
     
     public abstract int calcularCosto();
-    
     public TipoCliente getTipoCliente()
     {
         return tipoCliente;

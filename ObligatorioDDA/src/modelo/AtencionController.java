@@ -142,6 +142,52 @@ public class AtencionController
             a.comenzarAtencion(p);
         }
     }
+     public int cantNumerosEspera(Sector s){
+        int cant=0;
+        for(Atencion a : atenciones){
+               if(a.getSector().equals(s) && a.getPuesto()==null){
+                   cant++;
+               }
+            }
+        return cant;
+    }
+    
+    public long sumaPromedios(Sector s){
+        long suma= 0;
+        for(Puesto p : s.getPuestos()){
+            
+           suma += calcularTiempoPromedioPuesto(p);
+        }
+        return suma;
+    }
+    
+    public long tiempoPromedioAtencionSector(Sector s){
+        
+        long res =0;
+        if(s.cantPuestos()>0){
+            res=sumaPromedios(s)/s.cantPuestos();
+        }
+        return res;
+    }
+    
+    public long esperaEstimadaSector(Sector s){
+        long res=0;
+        if(s.cantTrabajadores()>0){
+            res =(tiempoPromedioAtencionSector(s)*cantNumerosEspera(s))/s.cantTrabajadores();
+        }
+        return res;
+    }
+    
+    public ArrayList<String> tiemposPromediosAtencion(Area a){
+            
+        ArrayList<String> esperas= new ArrayList();
+        for(Sector s : a.getSectores()){
+        String e= Long.toString(this.tiempoPromedioAtencionSector(s));
+        esperas.add(e);
+        }
+        return esperas;
+    }
+    
     
     public Atencion obtenerAtencionPuesto(Puesto p)
     {    

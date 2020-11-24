@@ -142,4 +142,24 @@ public class Fachada extends Observable
     {
         return atencionC.calcularTiempoPromedioPuesto(p);
     }
+    
+    public ArrayList<String> tiemposEsperaSectores(Area a){
+    
+        ArrayList<String> esperas= new ArrayList();
+        for(Sector s : a.getSectores()){
+            String e= Long.toString(atencionC.esperaEstimadaSector(s));
+            esperas.add(e);
+        }
+        return esperas;
+    }
+    
+    public ArrayList<String> tiemposPromediosAtenciones(ArrayList<Atencion> atenciones ){
+    
+        ArrayList<String> esperas= new ArrayList();
+        for(Atencion a : atenciones){
+            
+        }
+        
+        return esperas;
+    }
 }

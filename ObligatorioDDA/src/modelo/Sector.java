@@ -128,4 +128,8 @@ public class Sector
         }
         return pp;
     }    
+
+    public int cantPuestos() {
+        return puestos.size();
+    }
 }

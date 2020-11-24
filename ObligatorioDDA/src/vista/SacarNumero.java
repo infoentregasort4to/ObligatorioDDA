@@ -33,6 +33,8 @@ public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero
         jLabel3 = new javax.swing.JLabel();
         txtCi = new javax.swing.JTextField();
         btnPedirNumero = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listSectores = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -58,6 +60,8 @@ public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero
             }
         });
 
+        jScrollPane2.setViewportView(listSectores);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -65,8 +69,6 @@ public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btnPedirNumero)
                         .addGroup(layout.createSequentialGroup()
@@ -76,7 +78,13 @@ public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtCi)
-                                .addComponent(cboSectores, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(cboSectores, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel2)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -85,8 +93,10 @@ public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero
                 .addGap(19, 19, 19)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2))
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cboSectores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -96,7 +106,7 @@ public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero
                     .addComponent(txtCi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnPedirNumero)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         pack();
@@ -113,14 +123,15 @@ public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero
     }//GEN-LAST:event_btnPedirNumeroActionPerformed
     
     @Override
-    public void LimpiarValores()
+    public void limpiarValores()
     {
         txtCi.setText("");
     }
     
     @Override
-    public void MostrarSectores(ArrayList<Sector> sectores)
+    public void mostrarSectores(ArrayList<Sector> sectores)
     {
+        listSectores.setListData(sectores.toArray(new Sector[1]));
         for(Sector s : sectores)
         {
             cboSectores.addItem(s);            
@@ -134,6 +145,8 @@ public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<Sector> listSectores;
     private javax.swing.JList<String> listSectoresTiempos;
     private javax.swing.JTextField txtCi;
     // End of variables declaration//GEN-END:variables
@@ -143,4 +156,9 @@ public class SacarNumero extends javax.swing.JDialog implements VistaSacarNumero
     {
         JOptionPane.showMessageDialog(this, msg);
     }    
+
+    @Override
+    public void mostrarTiempos(ArrayList<String> t) {
+        listSectoresTiempos.setListData(t.toArray(new String[1]));
+    }
 }

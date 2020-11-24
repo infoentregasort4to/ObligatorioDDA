@@ -27,7 +27,7 @@ public class ControladorMonitorCliente implements Observador
             {
                 ArrayList<Atencion> a = ff.atencionesEnCurso();
                 vista.mostrarAtenciones(a);
-                vista.mostrarTiempos(ff.devolverTiempos(a));
+                vista.mostrarTiempos(ff.tiemposPromediosAtenciones());
             }
         } 
     }

@@ -17,7 +17,8 @@ public class ControladorSacarNumero
     {
         this.vista = vista;
         this.a = a;
-        vista.MostrarSectores(a.getSectores());
+        vista.mostrarSectores(a.getSectores());
+        vista.mostrarTiempos(ff.tiemposEsperaSectores(a));
     }
 
     public void crearAtencion(String ci, Sector s)
@@ -56,7 +57,7 @@ public class ControladorSacarNumero
         {
             vista.mostrarMensaje("Su atencion ha quedado en espera");
         }
-        vista.LimpiarValores();
+        vista.limpiarValores();
     }
 
     private boolean clienteEnEspera(String ci)

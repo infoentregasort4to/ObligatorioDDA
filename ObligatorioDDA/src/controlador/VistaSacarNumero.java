@@ -6,6 +6,7 @@ import modelo.Sector;
 public interface VistaSacarNumero
 {
     public void mostrarMensaje(String msg);
-    public void MostrarSectores(ArrayList<Sector> sectores);
-    public void LimpiarValores();
+    public void mostrarSectores(ArrayList<Sector> sectores);
+    public void limpiarValores();
+    public void mostrarTiempos(ArrayList<String> t);
 }
