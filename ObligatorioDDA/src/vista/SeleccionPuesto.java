@@ -6,8 +6,7 @@
 package vista;
 
 
-import Observador.Observable;
-import Observador.Observador;
+
 import controlador.ControladorSeleccionPuesto;
 import modelo.Trabajador;
 import modelo.Fachada;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import modelo.Puesto;
-import modelo.Sector;
+
 import controlador.VistaSeleccionPuesto;
 
 

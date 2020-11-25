@@ -1,7 +1,5 @@
 package controlador;
 
-import Observador.Observable;
-import Observador.Observador;
 import modelo.AtencionException;
 import modelo.Fachada;
 import modelo.Trabajador;

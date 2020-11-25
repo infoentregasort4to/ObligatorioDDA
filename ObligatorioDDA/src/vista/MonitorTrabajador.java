@@ -1,7 +1,5 @@
 package vista;
 
-import Observador.Observable;
-import Observador.Observador;
 import controlador.ControladorMonitorTrabajador;
 import modelo.Fachada;
 import java.util.ArrayList;
@@ -10,7 +8,7 @@ import controlador.VistaMonitorTrabajador;
 
 public class MonitorTrabajador extends javax.swing.JDialog implements VistaMonitorTrabajador
 {
-    private Fachada ff = modelo.Fachada.getInstancia();
+
     ControladorMonitorTrabajador controlador;
     
     public MonitorTrabajador(java.awt.Frame parent, boolean modal)

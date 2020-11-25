@@ -6,7 +6,6 @@ import javax.swing.JDialog;
 public class General extends javax.swing.JFrame
 {
 
-    private Fachada ff = modelo.Fachada.getInstancia();
     
     public General()
     {

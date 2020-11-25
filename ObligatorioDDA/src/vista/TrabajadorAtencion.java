@@ -1,33 +1,22 @@
 package vista;
 
-import Observador.Observable;
+
 import modelo.Fachada;
-import java.util.ArrayList;
-import javax.swing.JFrame;
+
 import modelo.Puesto;
-import modelo.Sector;
 import modelo.Trabajador;
-import Observador.Observador;
+
 import controlador.ControladorTrabajadorAtencion;
-import java.util.Calendar;
-import java.util.Date;
+
 import javax.swing.JOptionPane;
-import modelo.Area;
+
 import modelo.Atencion;
 import controlador.VistaTrabajadorAtencion;
 
 public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrabajadorAtencion {
 
-    private Atencion atencion;
-
-    private Fachada ff = modelo.Fachada.getInstancia();
-
-    private Trabajador trabajador;
-
-    private Sector sector;
-
+    private final Trabajador trabajador;
     private Puesto p;
-
     private ControladorTrabajadorAtencion controlador;
 
     public TrabajadorAtencion(java.awt.Frame parent, boolean modal, Puesto p, Trabajador t) {
