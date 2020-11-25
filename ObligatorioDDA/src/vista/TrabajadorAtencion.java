@@ -68,7 +68,13 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         Salir.setText("SALIR");
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +175,10 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
         controlador.guardarYSeguir(txtDesc.getText());
     }//GEN-LAST:event_finYSiguienteActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        controlador.logout();
+    }//GEN-LAST:event_formWindowClosing
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir;
     private javax.swing.JButton finYSiguiente;
@@ -200,7 +210,7 @@ public class TrabajadorAtencion extends javax.swing.JDialog implements VistaTrab
     }
 
     @Override
-    public void mostrarError(String s) {
+    public void mostrarMensaje(String s) {
         JOptionPane.showMessageDialog(this, s);
     }
 

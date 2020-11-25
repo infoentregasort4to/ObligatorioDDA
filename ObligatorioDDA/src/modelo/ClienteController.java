@@ -2,22 +2,15 @@ package modelo;
 
 import java.util.ArrayList;
 import modelo.Cliente;
-import modelo.TipoCliente;
 
 public class ClienteController
 {
     private ArrayList<Cliente> clientes = new ArrayList();     
-    private ArrayList<TipoCliente> tiposClientes = new ArrayList();
     
     public ArrayList<Cliente> getClientes()
     {
        return clientes;
-    }  
-    
-    public void agregarTipoCliente(TipoCliente tc)
-    {
-        this.tiposClientes.add(tc);
-    }
+    } 
     
     public void agregarCliente(Cliente c)
     {

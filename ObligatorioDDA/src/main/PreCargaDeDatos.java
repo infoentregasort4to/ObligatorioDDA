@@ -3,10 +3,11 @@ package main;
 import modelo.Fachada;
 import modelo.Area;
 import modelo.Cliente;
-import modelo.ClienteConCosto;
+import modelo.Gestor;
+import modelo.Exonerado;
+import modelo.ConCosto;
 import modelo.Puesto;
 import modelo.Sector;
-import modelo.TipoCliente;
 import modelo.Trabajador;
 
 public class PreCargaDeDatos
@@ -14,22 +15,13 @@ public class PreCargaDeDatos
     public void Cargar()
     {
         Fachada f = Fachada.getInstancia();
-                
-        //CREAR TIPOCLIENTES
-        TipoCliente tc1 = new TipoCliente("ClienteConCosto");
-        TipoCliente tc2 = new TipoCliente("ClienteExonerado");
-        TipoCliente tc3 = new TipoCliente("ClienteGestor"); 
-        
-        f.agregarTipoCliente(tc1);
-        f.agregarTipoCliente(tc2);
-        f.agregarTipoCliente(tc3); 
-        ///////////////////////////////////////////////
+        ///////////////////////////////////////////////                
         
         //CREAR CLIENTES
-        Cliente c1 = new ClienteConCosto(tc1,"1236","Seba","mail1@mail.com");
-        Cliente c2 = new ClienteConCosto(tc2,"1237","Tincho","mail2@mail.com");
-        Cliente c3 = new ClienteConCosto(tc3,"1238","Seba2","mail3@mail.com");
-        Cliente c4 = new ClienteConCosto(tc2,"1239","John","mail4@mail.com");        
+        Cliente c1 = new Cliente("1236","Seba","mail1@mail.com", new ConCosto()); 
+        Cliente c2 = new Cliente("1237","Tincho","mail2@mail.com",new Gestor());
+        Cliente c3 = new Cliente("1238","Seba2","mail3@mail.com",new Exonerado());
+        Cliente c4 = new Cliente("1239","John","mail4@mail.com", new ConCosto());        
         
         f.agregarCliente(c1);
         f.agregarCliente(c2);

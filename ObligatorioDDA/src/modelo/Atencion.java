@@ -7,15 +7,19 @@ public class Atencion  extends Observable
 {    
     private int numero;     
     private Puesto puesto; 
-    private Cliente cliente;
-    private Date fechaHora;
-    private String descripcion;   
+    private Cliente cliente;    
+    private Date fechaHoraPedido;   
+    private Date fechaHoraComienzo;
     private Date fechaHoraFin;
-    private Sector sector;    
+    private String descripcion;
+    private Sector sector;
+    private float costoFijo = 1500;
+    
     public enum Eventos{nuevaAtencion;}
     
     public Atencion(int numero, Cliente cliente, Sector s, Puesto p) // atencion sin espera
     {
+        this.fechaHoraPedido = new Date();
         this.sector=s;
         this.numero = numero;
         this.cliente = cliente;
@@ -25,10 +29,21 @@ public class Atencion  extends Observable
     
     public Atencion(int numero, Cliente cliente,Sector sector) // atencion con espera
     {
+        this.fechaHoraPedido = new Date();
         this.sector=sector;
         this.numero = numero;
         this.cliente = cliente;        
         avisar(Eventos.nuevaAtencion);
+    }
+
+    public float getCostoFijo()
+    {
+        return costoFijo;
+    }
+
+    public void setCostoFijo(float costoFijo)
+    {
+        this.costoFijo = costoFijo;
     }
    
     public Sector getSector()
@@ -65,6 +80,11 @@ public class Atencion  extends Observable
     {
         return cliente;
     }
+    
+    public float Cobrar()
+    {
+        return cliente.Cobrar(this.calcularTiempoEspera(), this.costoFijo);
+    }
 
     public void setCliente(Cliente cliente)
     {
@@ -73,12 +93,12 @@ public class Atencion  extends Observable
 
     public Date getFechaHora()
     {
-        return fechaHora;
+        return fechaHoraComienzo;
     }
 
     public void setFechaHora(Date fecha_hora)
     {        
-        this.fechaHora = fecha_hora;
+        this.fechaHoraComienzo = fecha_hora;
     }
 
     public String getDescripcion()
@@ -101,17 +121,29 @@ public class Atencion  extends Observable
         this.fechaHoraFin = fechaHoraFin;
     }
     
+    public Date getFechaHoraPedido()
+    {
+        return fechaHoraPedido;
+    }
+
+    public void setFechaHoraPedido(Date fechaHoraPedido)
+    {
+        this.fechaHoraPedido = fechaHoraPedido;
+    }
+    
     public void comenzarAtencion(Puesto puesto)
     {
         puesto.setPuestoDisponible(false);
         this.puesto = puesto;
-        this.fechaHora = new Date();         
+        this.fechaHoraComienzo = new Date();         
     }
     
-    public void finalizarAtencion(String d)
+    public float finalizarAtencion(String d)
     {
         this.fechaHoraFin = new Date();
-        this.descripcion = d;        
+        this.descripcion = d; 
+        
+        return this.Cobrar();
     }
     
     public boolean atencionPendiente()
@@ -124,9 +156,15 @@ public class Atencion  extends Observable
         return this.puesto!=null && this.fechaHoraFin==null;
     }
     
+    public long calcularTiempoEspera()
+    {   
+       long segundos = ChronoUnit.SECONDS.between(fechaHoraPedido.toInstant(),fechaHoraComienzo.toInstant());
+       return segundos ;
+    }
+    
     public long calcularTiempo()
     {   
-       long segundos = ChronoUnit.SECONDS.between(fechaHora.toInstant(),fechaHoraFin.toInstant());
+       long segundos = ChronoUnit.SECONDS.between(fechaHoraComienzo.toInstant(),fechaHoraFin.toInstant());
        return segundos ;
     }   
     

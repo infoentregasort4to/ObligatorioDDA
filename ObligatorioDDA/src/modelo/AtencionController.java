@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class AtencionController
 {
-    private ArrayList<Atencion> atenciones = new ArrayList();   
+    private ArrayList<Atencion> atenciones = new ArrayList();
     
     public ArrayList<Atencion> atencionesPendientes()
     {
@@ -128,10 +128,11 @@ public class AtencionController
         a.comenzarAtencion(p);     
     }
     
-    public void finalizarAtencion(Atencion a, String d)
-    {
-        a.finalizarAtencion(d);
+    public float finalizarAtencion(Atencion a, String d)
+    {     
+        float importe = a.finalizarAtencion(d);
         a.getPuesto().setPuestoDisponible(true);
+        return importe;
     }
     
     public void asignarAtencion(Puesto p,Sector s)
@@ -180,7 +181,10 @@ public class AtencionController
         
         if(s.cantTrabajadores()>0)
         {
-            res =(tiempoPromedioAtencionSector(s)*cantNumerosEspera(s))/s.cantTrabajadores();
+            long tpas = tiempoPromedioAtencionSector(s);
+            long cantNrosE = cantNumerosEspera(s);
+            long cantT = s.cantTrabajadores();
+            res =(tpas*cantNrosE)/cantT;
         }
         return res;
     }
@@ -227,5 +231,5 @@ public class AtencionController
         }        
         
         return aa;
-    }
+    } 
 }

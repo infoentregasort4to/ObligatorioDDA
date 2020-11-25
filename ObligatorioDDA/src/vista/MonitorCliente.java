@@ -46,7 +46,7 @@ public class MonitorCliente extends javax.swing.JDialog implements VistaMonitorC
 
         jScrollPane2.setViewportView(listaTiempos);
 
-        jLabel2.setText("Espera estimada");
+        jLabel2.setText("Promedio Sector");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

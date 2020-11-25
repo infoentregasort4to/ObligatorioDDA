@@ -1,31 +1,29 @@
 package modelo;
 
-public abstract class Cliente 
-{    
-    private TipoCliente tipoCliente;    
+public class Cliente 
+{        
     private String ci;
     private String nombre;
     private String email;
-    protected int costoFijo = 1000;
+    private ITipoCobro tipoCobro;    
      
-    public Cliente(TipoCliente tipoCliente, String ci, String nombre, String email)
+    public Cliente(String ci, String nombre, String email,ITipoCobro tipoCobro)
     {
-        this.tipoCliente = tipoCliente;
         this.ci = ci;
         this.nombre = nombre;
         this.email = email;
+        this.tipoCobro = tipoCobro;
     }
     
-    public abstract int calcularCosto();
-    public TipoCliente getTipoCliente()
+    public float Cobrar(float tiempo, float costoFijo)
     {
-        return tipoCliente;
+        return tipoCobro.Cobrar(tiempo,costoFijo);
     }
 
-    public void setTipoCliente(TipoCliente tipoCliente)
+    public void setTipoCobro(ITipoCobro tipoCobro)
     {
-        this.tipoCliente = tipoCliente;
-    }
+        this.tipoCobro = tipoCobro;
+    }    
 
     public String getCi()
     {
@@ -55,17 +53,7 @@ public abstract class Cliente
     public void setEmail(String email)
     {
         this.email = email;
-    }
-    
-    public int getCostoFijo()
-    {
-        return costoFijo;
-    }
-
-    public void setCostoFijo(int costoFijo)
-    {
-        this.costoFijo = costoFijo;
-    } 
+    }   
     
     @Override
     public String toString()

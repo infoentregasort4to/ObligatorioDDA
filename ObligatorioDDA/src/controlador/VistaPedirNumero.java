@@ -3,10 +3,10 @@ package controlador;
 import java.util.ArrayList;
 import modelo.Sector;
 
-public interface VistaSacarNumero
+public interface VistaPedirNumero
 {
     public void mostrarMensaje(String msg);
     public void mostrarSectores(ArrayList<Sector> sectores);
-    public void limpiarValores();
     public void mostrarTiempos(ArrayList<String> t);
+    public void CerrarVentana();
 }

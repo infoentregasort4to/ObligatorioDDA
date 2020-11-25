@@ -75,7 +75,7 @@ public class ControladorTrabajadorAtencion implements Observador {
         }
         else
         {
-            vista.mostrarError("No es posible finalizar su sesion!");            
+            vista.mostrarMensaje("No es posible finalizar su sesion!");            
         }
     }
     
@@ -89,15 +89,19 @@ public class ControladorTrabajadorAtencion implements Observador {
     {         
         try
         {
-            ff.finalizarAtencion(this.atencion, descripcion);
+            
+            float importe = ff.finalizarAtencion(this.atencion, descripcion);
             vista.finYSiguiente();
             vista.mostrarAtencion(buscarAtencionPendiente());            
             actualizarInfo();
+            
+            vista.mostrarMensaje("El costo de la atencion es de: " + importe);
+            
         }
         catch (AtencionException ae)
         {
             String msg = ae.getMessage();
-            vista.mostrarError(msg);
+            vista.mostrarMensaje(msg);
         }
     }
 }

@@ -27,11 +27,7 @@ public class Fachada extends Observable
             tiempos.add(Long.toString(atencionC.calcularPromedioSector(aa.getSector())));
         }
         return tiempos;
-    }
-    public void agregarTipoCliente(TipoCliente tc)
-    {
-        clientesC.agregarTipoCliente(tc);
-    }
+    }    
 
     public void agregarCliente(Cliente c)
     {
@@ -127,15 +123,17 @@ public class Fachada extends Observable
         avisar(Eventos.ComienzoAtencion);
     }
     
-    public void finalizarAtencion(Atencion a, String d) throws AtencionException
+    public float finalizarAtencion(Atencion a, String d) throws AtencionException
     {
         if(a == null)
         {
             throw new AtencionException("No es posible finalizar una atencion vacia!");
         } 
-        atencionC.finalizarAtencion(a, d);
-        
+        float importe = atencionC.finalizarAtencion(a, d);
+                 
         avisar(Eventos.FinAtencion);                
+    
+        return importe;
     }
 
     public long calcularTiempoPromedioPuesto(Puesto p)

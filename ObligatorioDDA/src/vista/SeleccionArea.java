@@ -83,7 +83,7 @@ public class SeleccionArea extends javax.swing.JDialog implements VistaSeleccion
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
        dispose();
        Area a= (Area)this.cboAreas.getSelectedItem();        
-       JDialog PedirNumero = new SacarNumero(null, false,a);
+       JDialog PedirNumero = new PedirNumero(null, false,a);
        PedirNumero.setResizable(false);
        PedirNumero.setLocationRelativeTo(null);
        PedirNumero.setVisible(true);

@@ -7,13 +7,13 @@ import modelo.Cliente;
 import modelo.Fachada;
 import modelo.Sector;
 
-public class ControladorSacarNumero
+public class ControladorPedirNumero
 {
     private Fachada ff = Fachada.getInstancia();
-    private VistaSacarNumero vista;
+    private VistaPedirNumero vista;
     private Area a;
 
-    public ControladorSacarNumero(VistaSacarNumero vista, Area a)
+    public ControladorPedirNumero(VistaPedirNumero vista, Area a)
     {
         this.vista = vista;
         this.a = a;
@@ -57,7 +57,9 @@ public class ControladorSacarNumero
         {
             vista.mostrarMensaje("Su atencion ha quedado en espera");
         }
-        vista.limpiarValores();
+        
+        vista.CerrarVentana();
+               
     }
 
     private boolean clienteEnEspera(String ci)
