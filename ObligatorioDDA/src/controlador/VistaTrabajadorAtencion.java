@@ -8,4 +8,6 @@ public interface VistaTrabajadorAtencion
     public void Salir();
     public void finYSiguiente();
     public void actualizarInfo(String t,String c);
+    public void mostrarArea(String a);
+    public void mostrarSector(String s);
 }

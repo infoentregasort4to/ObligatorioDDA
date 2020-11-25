@@ -28,10 +28,15 @@ public class ControladorTrabajadorAtencion implements Observador {
         ff.agregar(this);        
         this.sector=ff.obtenerSectorTrabajador(t);         
         this.aa = ff.obtenerAreaSector(this.sector);
-        vista.mostrarAtencion(buscarAtencionPendiente());
-        vista.mostrarTitulo(t.toString());        
+        inicializarInfo(aa,sector,t);
     }
 
+    public void inicializarInfo(Area a,Sector s,Trabajador t){
+        vista.mostrarArea(a.toString());
+        vista.mostrarSector(s.toString());
+        vista.mostrarTitulo(t.toString()); 
+        vista.mostrarAtencion(buscarAtencionPendiente());
+    }
     public Atencion getAtencionEnCurso()
     {
         return atencion;
@@ -75,7 +80,7 @@ public class ControladorTrabajadorAtencion implements Observador {
         }
         else
         {
-            vista.mostrarMensaje("No es posible finalizar su sesion!");            
+            vista.mostrarMensaje("No puede salir con una atencion pendiente!");            
         }
     }
     

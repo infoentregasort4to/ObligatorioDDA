@@ -12,7 +12,7 @@ public class AtencionController
         for(Atencion a: this.atenciones)
         {
             if(a.atencionPendiente())
-                atenciones.add(a);
+            atenciones.add(a);
         }        
         return atenciones;
     } 
