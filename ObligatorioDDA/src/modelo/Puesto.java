@@ -1,13 +1,13 @@
 package modelo;
 import Observador.Observable;
 
-public class Puesto extends Observable
+public class Puesto 
 {    
     private String nombre;
     private Trabajador trabajador;
     private boolean disponible;
 
-    public enum Eventos{PuestoDisponible,PuestoOcupado;}
+    
 
     public Puesto(String nombre) 
     {
@@ -46,7 +46,7 @@ public class Puesto extends Observable
     
     public void setTrabajador(Trabajador t)
     {
-        avisar(Eventos.PuestoDisponible);
+        
         this.trabajador= t;
         this.disponible=true;        
     }

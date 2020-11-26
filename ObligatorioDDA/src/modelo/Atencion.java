@@ -3,7 +3,7 @@ import java.util.Date;
 import Observador.Observable;
 import java.time.temporal.ChronoUnit;
 
-public class Atencion  extends Observable
+public class Atencion  
 {    
     private int numero;     
     private Puesto puesto; 
@@ -24,7 +24,7 @@ public class Atencion  extends Observable
         this.numero = numero;
         this.cliente = cliente;
         this.puesto=p;
-        avisar(Eventos.nuevaAtencion);
+        
     }
     
     public Atencion(int numero, Cliente cliente,Sector sector) // atencion con espera
@@ -33,7 +33,7 @@ public class Atencion  extends Observable
         this.sector=sector;
         this.numero = numero;
         this.cliente = cliente;        
-        avisar(Eventos.nuevaAtencion);
+        
     }
 
     public float getCostoFijo()
